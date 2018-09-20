@@ -4,8 +4,8 @@
   "description": "eksicode.org telegram bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-   "start": "BOT_TOKEN=656016015:AAEkfZdTsiW6oiS3SLwpvtyDenJzC5A8yT0 node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [
     "eksicode",
@@ -16,6 +16,7 @@
   "author": "Davut KARA",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^6.0.0",
     "telegraf": "^3.23.1"
   }
 }

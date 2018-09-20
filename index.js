@@ -2,7 +2,7 @@
  * Bu script, eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
  * ve ilerde chat vb geliştirmeler için yapılmıştır.
  */
-
+require('dotenv').config();
 const Telegraf = require('telegraf');
 const fs = require('fs');
 const bot = new Telegraf(process.env.BOT_TOKEN);
