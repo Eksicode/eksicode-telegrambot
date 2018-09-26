@@ -89,6 +89,22 @@ let allGroups = [
     channelID: '-1001242968716'
   },
   {
+    name: "Linux",
+    logo: "devicon-linux-plain colored",
+    icon: "",
+    members: 3,
+    link: "https://t.me/joinchat/G0kqtVJHX4wfC6EQJme4YA",
+    channelID: '-1001380409228'
+  },
+  {
+    name: "Windows",
+    logo: "devicon-windows8-original colored",
+    icon: "",
+    members:3,
+    link: "https://t.me/joinchat/G0kqtU0BZ1dY6ee0K3EWoQ",
+    channelID: '-1001291937623'
+  },
+  {
     name: 'Veri Bilimi',
     logo: 'material-icons',
     icon: 'blur_on',
