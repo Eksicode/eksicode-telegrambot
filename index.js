@@ -130,19 +130,20 @@ let allGroups = [
   }
 ];
 
-let groupCounts = allGroups.length;
-while (groupCounts--) {
-  let channel = allGroups[groupCounts];
-  (async channel => {
-    await bot.telegram
-      .getChatMembersCount(channel.channelID)
-      .then(data => (channel.members = data))
-      .catch(err => console.log(`${channel.name} için data çekilemedi.`));
-  })(channel);
-  delete channel.channelID;
-}
-allGroups = JSON.stringify(allGroups);
-fs.writeFile(`./${resultFileName}.json`, allGroups, function(err) {
-  if (err) console.log('Dosya yazdırılamadı');
-  console.log(`${resultFileName}.json dosyasına kayıt edildi.`);
-});
+(async function (){
+  for (channel of allGroups) {
+      await bot.telegram
+        .getChatMembersCount(channel.channelID)
+        .then(data => {channel.members = data})
+        .catch(err => console.log(`${channel.name} için data çekilemedi.`));
+
+    delete channel.channelID;
+  }
+
+  allGroups = JSON.stringify(allGroups);
+  fs.writeFile(`./${resultFileName}.json`, allGroups, function(err) {
+    if (err) console.log('Dosya yazdırılamadı');
+    console.log(`${resultFileName}.json dosyasına kayıt edildi.`);
+  });
+
+})()
