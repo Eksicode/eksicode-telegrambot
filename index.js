@@ -2,7 +2,10 @@
  * Bu script, eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
  * ve ilerde chat vb geliştirmeler için yapılmıştır.
  */
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({
+  path:  path.join(__dirname,'.env')
+});
 const Telegraf = require('telegraf');
 const fs = require('fs');
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -141,7 +144,7 @@ let allGroups = [
   }
 
   allGroups = JSON.stringify(allGroups);
-  fs.writeFile(`./${resultFileName}.json`, allGroups, function(err) {
+  fs.writeFile( path.join(__dirname,`${resultFileName}.json`), allGroups, function(err) {
     if (err) console.log('Dosya yazdırılamadı');
     console.log(`${resultFileName}.json dosyasına kayıt edildi.`);
   });
