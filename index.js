@@ -130,6 +130,14 @@ let allGroups = [
     members: 63,
     link: 'https://t.me/joinchat/G0kqtRGgWUViQ7fZzA93UQ',
     channelID: '-1001263722948'
+  },
+  {
+    name: 'Kariyer',
+    logo: 'material-icons',
+    icon: 'work',
+    members: 10,
+    link: 'https://t.me/joinchat/G0kqtUkgfGd9DJMfGUxGUw',
+    channelID: '-1001226865767'
   }
 ];
 
