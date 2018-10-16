@@ -15,7 +15,7 @@ let allGroups = [
     name: 'Genel Konular',
     logo: 'material-icons',
     icon: 'chat',
-    members: 72,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtVFVFl2cWMnmJdUniw',
     channelID: '-1001364530781'
   },
@@ -23,7 +23,7 @@ let allGroups = [
     name: 'JavaScript',
     logo: 'devicon-javascript-plain colored',
     icon: '',
-    members: 163,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtQ2bMHbsHgiIMKMpyg',
     channelID: '-1001156686363'
   },
@@ -39,7 +39,7 @@ let allGroups = [
     name: 'PHP',
     logo: 'devicon-php-plain colored',
     icon: '',
-    members: 28,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtUgwV5JmLHug4VBwpA',
     channelID: '-1001211127698'
   },
@@ -47,7 +47,7 @@ let allGroups = [
     name: 'C++',
     logo: 'devicon-cplusplus-plain colored',
     icon: '',
-    members: 25,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtUgjXMM2jDEysQFTsA',
     channelID: '-1001210277059'
   },
@@ -55,7 +55,7 @@ let allGroups = [
     name: 'C',
     logo: 'devicon-c-plain colored',
     icon: '',
-    members: 17,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtQ0-rHk9g1v61dUWsA',
     channelID: '-1001277875067'
   },
@@ -63,7 +63,7 @@ let allGroups = [
     name: 'C#',
     logo: 'devicon-csharp-plain colored',
     icon: '',
-    members: 18,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtU9zTmZKbyCpNqkobA',
     channelID: '-1001332956774'
   },
@@ -71,7 +71,7 @@ let allGroups = [
     name: 'Java',
     logo: 'devicon-java-plain colored',
     icon: '',
-    members: 15,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtVLK6GPjF1BrtzJQlg',
     channelID: '-1001389029475'
   },
@@ -79,7 +79,7 @@ let allGroups = [
     name: 'Ruby',
     logo: 'devicon-ruby-plain colored',
     icon: '',
-    members: 2,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtRIEXv8_XPZVygG1ZQ',
     channelID: '-1001369784092'
   },
@@ -87,7 +87,7 @@ let allGroups = [
     name: 'DevOps',
     logo: 'devicon-debian-plain colored',
     icon: '',
-    members: 15,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtUoWMoxyIXb7u2vhlg',
     channelID: '-1001242968716'
   },
@@ -95,7 +95,7 @@ let allGroups = [
     name: "Linux",
     logo: "devicon-linux-plain colored",
     icon: "",
-    members: 3,
+    members: 0,
     link: "https://t.me/joinchat/G0kqtVJHX4wfC6EQJme4YA",
     channelID: '-1001380409228'
   },
@@ -103,20 +103,20 @@ let allGroups = [
     name: "Windows",
     logo: "devicon-windows8-original colored",
     icon: "",
-    members:3,
+    members: 0,
     link: "https://t.me/joinchat/G0kqtU0BZ1dY6ee0K3EWoQ",
     channelID: '-1001291937623'
   },
   {
-    name: 'Veri Bilimi',
+    name: 'Yapay Zeka & Veri Bilimi ',
     logo: 'material-icons',
     icon: 'blur_on',
-    members: 24,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtU8wTomSdNKA2EO-0Q',
     channelID: '-1001328565897'
   },
   {
-    name: 'Matematik',
+    name: 'Matematik & Algoritma',
     logo: 'material-icons',
     icon: 'functions',
     members: 2,
@@ -127,7 +127,7 @@ let allGroups = [
     name: 'İngilizce',
     logo: 'material-icons',
     icon: 'school',
-    members: 63,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtRGgWUViQ7fZzA93UQ',
     channelID: '-1001263722948'
   },
@@ -135,9 +135,17 @@ let allGroups = [
     name: 'Kariyer',
     logo: 'material-icons',
     icon: 'work',
-    members: 10,
+    members: 0,
     link: 'https://t.me/joinchat/G0kqtUkgfGd9DJMfGUxGUw',
     channelID: '-1001226865767'
+  },
+  {
+    "name": "Geyik",
+    "logo": "material-icons",
+    "icon": "child_care",
+    "members": 0,
+    "link": "https://t.me/joinchat/G0kqtUpxzWhIo5XMy7dpfg",
+    channelID: '-100248972136'
   }
 ];
 
