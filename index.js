@@ -145,7 +145,7 @@ let allGroups = [
     "icon": "child_care",
     "members": 0,
     "link": "https://t.me/joinchat/G0kqtUpxzWhIo5XMy7dpfg",
-    channelID: '-100248972136'
+    channelID: '-1001226865767'
   }
 ];
 
