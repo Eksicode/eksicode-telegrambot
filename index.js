@@ -116,6 +116,22 @@ let allGroups = [
     channelID: '-1001328565897'
   },
   {
+    name: 'Oyun Geliştirme',
+    logo: 'material-icons',
+    icon: 'videogame_asset',
+    members: 0,
+    link: 'https://t.me/joinchat/G0kqtULsyqR4uGGfQMI8Qw',
+    channelID: '-1001122814628'
+  },
+  {
+    name: 'UX/UI - Tasarım',
+    logo: 'material-icons',
+    icon: 'format_shapes',
+    members: 0,
+    link: 'https://t.me/joinchat/G0kqtVg_ctqgJ96cmuvSwQ',
+    channelID: '-1001480553178'
+  },
+  {
     name: 'Matematik & Algoritma',
     logo: 'material-icons',
     icon: 'functions',
