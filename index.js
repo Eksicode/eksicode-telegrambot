@@ -116,6 +116,14 @@ let allGroups = [
     channelID: '-1001328565897'
   },
   {
+    name: 'Mobil Grubu ANDROID / IOS / WINDOWS MOBILE',
+    logo: 'material-icons',
+    icon: 'phone_iphone',
+    members: 0,
+    link: 'https://t.me/joinchat/G0kqtU1-nxyiTPmCiw1OLA',
+    channelID: '-1001300143900'
+  },
+  {
     name: 'Oyun Geliştirme',
     logo: 'material-icons',
     icon: 'videogame_asset',
