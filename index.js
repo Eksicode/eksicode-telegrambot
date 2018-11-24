@@ -116,7 +116,7 @@ let allGroups = [
     channelID: '-1001328565897'
   },
   {
-    name: 'Mobil Grubu ANDROID / IOS / WINDOWS MOBILE',
+    name: 'Mobil Uygulama Geliştirme';,
     logo: 'material-icons',
     icon: 'phone_iphone',
     members: 0,
