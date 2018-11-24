@@ -2,7 +2,7 @@
 
 ## Nedir ##
 
- Bu script, eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
+ Bu script, http://eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
  ve ilerde chat vb geliştirmeler için yapılmıştır.
 
 ### Nasıl Çalıştırılır ###
