@@ -164,11 +164,11 @@ let allGroups = [
     channelID: '-1001226865767'
   },
   {
-    "name": "Geyik",
-    "logo": "material-icons",
-    "icon": "child_care",
-    "members": 0,
-    "link": "https://t.me/joinchat/G0kqtUpxzWhIo5XMy7dpfg",
+    name: "Geyik",
+    logo: "material-icons",
+    icon: "child_care",
+    members: 0,
+    link: "https://t.me/joinchat/G0kqtUpxzWhIo5XMy7dpfg",
     channelID: '-1001248972136'
   }
 ];
