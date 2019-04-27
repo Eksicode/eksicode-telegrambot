@@ -1,11 +1,11 @@
 {
   "name": "eksicodetbot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "eksicode.org telegram bot",
-  "main": "index.js",
+  "main": "telegram.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node telegram.js"
   },
   "keywords": [
     "eksicode",
@@ -13,10 +13,12 @@
     "telegram",
     "bot"
   ],
-  "author": "Davut KARA",
+  "author": "Davut KARA & Mkltkn",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.0.0",
+    "mysql": "^2.16.0",
     "path": "^0.12.7",
     "telegraf": "^3.23.1"
   }

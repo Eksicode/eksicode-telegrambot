@@ -2,13 +2,15 @@
 
 ## Nedir ##
 
- Bu script, http://eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
+ Bu script, http://eksicode.org telegram grupları üzerindeki kayıtlı üye sayılarını ölçmek
  ve ilerde chat vb geliştirmeler için yapılmıştır.
 
 ### Nasıl Çalıştırılır ###
 
- Paketleri yükleyin: `npm i`
+* Mysql veritabanını kurun, tabloları oluşturun (bilgi için bizimle iletişime geçebilirsiniz)
 
- .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU` ekleyin.
+* Paketleri yükleyin: `npm i`
 
- Scripti çalıştırın: `npm run start`
+* .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, ve mysql db bağlantı bilgilerini ekleyin.
+
+* Scripti çalıştırın: `npm run start`
