@@ -16,7 +16,7 @@ const axios = require('axios');
 
   let allGroups;
 
-  axios.get('http://api.eksicode.org/telegrams')
+  axios.get('http://api.eksicode.org/telegrams?_sort=ListOrder:ASC')
     .then(async function(response){
       allGroups = response.data;
       console.log(response.data.length);
