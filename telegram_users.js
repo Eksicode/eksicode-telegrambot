@@ -23,3 +23,4 @@ const removeJoinedHandler = async (ctx) => {
 
 bot.use(removeJoinedHandler)
 bot.on('new_chat_members', newChatMemberHandler)
+bot.launch()
