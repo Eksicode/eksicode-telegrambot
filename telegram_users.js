@@ -16,11 +16,10 @@ const newChatMemberHandler = async (ctx) => {
 }
 
 const removeJoinedHandler = async (ctx) => {
-  if (ctx.updateSubTypes.includes("left_chat_member") || ctx.updateSubTypes.includes("new_chat_members")) {
-    await ctx.deleteMessage()
-  }
+  await ctx.deleteMessage()
 }
 
-bot.use(removeJoinedHandler)
+
+bot.on(["new_chat_members", "left_chat_member"], removeJoinedHandler)
 bot.on('new_chat_members', newChatMemberHandler)
 bot.launch()
