@@ -5,8 +5,9 @@ require('dotenv').config({
   path: path.join(__dirname,'.env')
 });
 
+const token = process.env.BOT_TOKEN;
 const Telegraf = require('telegraf');
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(token);
 
 const newChatMemberHandler = async (ctx) => {
 
@@ -16,7 +17,7 @@ const newChatMemberHandler = async (ctx) => {
 }
 
 const removeJoinedHandler = async (ctx) => {
-  await ctx.deleteMessage()
+  await ctx.deleteMessage().catch(() => console.log("Hata: Yetkisiz İşlem. Lütfen eksiCodeBot'a yönetici ayrıcalıkları tanıyın."))
 }
 
 
