@@ -16,7 +16,7 @@ bot.use(CommandParser());
 
 bot.command((ctx) => {
     const args = ctx.state.command.splitArgs;
-      fetch(args[0])
+    fetch(args[0])
       .then(res => res.text())
       .then(html => {
         const title = parse(html).querySelector('title').rawText;
@@ -36,7 +36,15 @@ bot.command((ctx) => {
         .then(() => {
           ctx.reply(`Teşekkürler ${ctx.from.first_name}! Yönetici ekibimiz en kısa zamanda inceleyip onaylayacak.`)
         })
-      });
+        .catch(err => ctx.reply("Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin."))
+      })
+      .catch(err => {
+        if(err.name == "TypeError") {
+          ctx.reply("Geçersiz kullanım. Kullanım: /kaynak <link>")
+        } else if (err.name == "FetchError") {
+          ctx.reply("Link geçersiz. Lütfen tekrar deneyin.")
+        }
+      })
 });
 
 bot.launch();
