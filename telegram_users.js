@@ -28,6 +28,9 @@ const removeJoinedHandler = async (ctx) => {
 bot.command('kaynak', (ctx) => {
     fetch("http://api.eksicode.org/auth/local", {
       'method': 'POST',
+      'headers': {
+        'Content-Type': 'application/json'
+      },
       'body': JSON.stringify({
         'identifier': process.env.API_USER,
         'password': process.env.API_PASS
@@ -35,6 +38,7 @@ bot.command('kaynak', (ctx) => {
     })
     .then(res => res.json())
     .then(info => {
+      console.log(info)
       const args = ctx.state.command.splitArgs;
       const url = args[0].startsWith("http") ? args[0] : "http://" + args[0]
       fetch(url)
