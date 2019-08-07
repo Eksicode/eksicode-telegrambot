@@ -27,13 +27,14 @@ const removeJoinedHandler = async (ctx) => {
 
 bot.command((ctx) => {
     const args = ctx.state.command.splitArgs;
-    fetch(args[0])
+    const url = args[0].startsWith("http") ? args[0] : "http://" + args[0]
+    fetch(url)
       .then(res => res.text())
       .then(html => {
         const title = parse(html).querySelector('title').rawText;
         const requestData = {
           "doc_name": title,
-          "doc_link": args[0],
+          "doc_link": url,
           "doc_creator_tg": ctx.from.id
         }
         fetch("http://api.eksicode.org/kaynaklars", {
