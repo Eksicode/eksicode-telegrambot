@@ -38,7 +38,6 @@ bot.command('kaynak', (ctx) => {
     })
     .then(res => res.json())
     .then(info => {
-      console.log(info)
       const args = ctx.state.command.splitArgs;
       const url = args[0].startsWith("http") ? args[0] : "http://" + args[0]
       fetch(url)
@@ -48,7 +47,8 @@ bot.command('kaynak', (ctx) => {
           const requestData = {
             "doc_name": title,
             "doc_link": url,
-            "doc_creator_tg": ctx.from.id
+            "doc_creator_tg": ctx.from.id,
+            "doc_tg_ch": ctx.chat.id
           }
           fetch("http://api.eksicode.org/kaynaklars", {
             "method": "POST",
@@ -59,7 +59,7 @@ bot.command('kaynak', (ctx) => {
             "body": JSON.stringify(requestData)
           })
           .then(res => res.json())
-          .then(() => {
+          .then((sad) => {
             ctx.reply(`Teşekkürler ${ctx.from.first_name}! Yönetici ekibimiz en kısa zamanda inceleyip onaylayacak.`)
           })
           .catch(err => ctx.reply("Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin."))
