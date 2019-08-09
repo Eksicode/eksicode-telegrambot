@@ -79,7 +79,6 @@ bot.command("kanal", (ctx) => {
   const args = ctx.state.command.args;
   ctx.getChatMember(ctx.from.id)
     .then(res => {
-      console.log(res.status)
   if (res.status != "member") {
     fetch(`http://api.eksicode.org/telegrams`)
     .then(res => res.json())
