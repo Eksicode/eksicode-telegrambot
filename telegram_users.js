@@ -9,6 +9,7 @@ const token = process.env.BOT_TOKEN;
 const Telegraf = require('telegraf');
 const CommandParser = require('telegraf-command-parts');
 const fetch = require('node-fetch');
+const stringSimilarity = require('string-similarity');
 const { parse } = require('node-html-parser');
 const bot = new Telegraf(token);
 
@@ -73,6 +74,30 @@ bot.command('kaynak', (ctx) => {
         })
     })
 });
+
+bot.command("kanal", (ctx) => {
+  const args = ctx.state.command.args;
+  ctx.getChatMember(ctx.from.id)
+    .then(res => {
+      console.log(res.status)
+  if (res.status != "member") {
+    fetch(`http://api.eksicode.org/telegrams`)
+    .then(res => res.json())
+    .then(channels => {
+      const searchResults = channels.filter(e => {
+        return stringSimilarity.compareTwoStrings(args.toLowerCase(), e.name.toLowerCase()) > 0.25
+      })
+      ctx.reply(`Sonuçlar:
+
+${searchResults.map(e => {
+  return `${e.name}: ${e.link}
+`}).join("")}`)
+    })
+  }
+    })
+
+  
+})
 
 bot.on(["new_chat_members", "left_chat_member"], removeJoinedHandler)
 
