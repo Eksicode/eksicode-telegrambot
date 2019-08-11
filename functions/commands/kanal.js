@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const stringSimilarity = require("string-similarity");
+const Fuse = require("fuse.js");
 const { parse } = require("node-html-parser");
 
 const kanalCommand = ctx => {
@@ -9,19 +9,18 @@ const kanalCommand = ctx => {
             fetch(`http://api.eksicode.org/telegrams`)
                 .then(res => res.json())
                 .then(channels => {
-                    const searchResults = channels.filter(e => {
-                        return (
-                            stringSimilarity.compareTwoStrings(
-                                args.toLowerCase(),
-                                e.name.toLowerCase()
-                            ) > 0.25
-                        );
+                    const fuse = new Fuse(channels, {
+                        shouldSort: true,
+                        threshold: 0.3,
+                        minMatchCharLength: 1,
+                        keys: ["name"]
                     });
+                    const searchResults = fuse.search(args);
                     if (searchResults.length) {
                         ctx.reply(
                             `Sonuçlar:
                         \n${searchResults
-                            .map(e => `${e.name}: ${e.link}`)
+                            .map(e => `${e.name}: ${e.link}\n`)
                             .join("")}`
                         );
                     } else {

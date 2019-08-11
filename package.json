@@ -1,29 +1,29 @@
 {
-  "name": "eksicodetbot",
-  "version": "2.0.0",
-  "description": "eksicode.org telegram bot",
-  "main": "telegram.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node telegram.js"
-  },
-  "keywords": [
-    "eksicode",
-    "eksi",
-    "telegram",
-    "bot"
-  ],
-  "author": "Davut KARA & Mkltkn",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.1",
-    "dotenv": "^6.0.0",
-    "mysql": "^2.16.0",
-    "node-fetch": "^2.6.0",
-    "node-html-parser": "^1.1.16",
-    "path": "^0.12.7",
-    "string-similarity": "^3.0.0",
-    "telegraf": "^3.23.1",
-    "telegraf-command-parts": "^1.0.3"
-  }
+    "name": "eksicodetbot",
+    "version": "2.0.0",
+    "description": "eksicode.org telegram bot",
+    "main": "telegram.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node telegram.js"
+    },
+    "keywords": [
+        "eksicode",
+        "eksi",
+        "telegram",
+        "bot"
+    ],
+    "author": "Davut KARA & Mkltkn",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.18.1",
+        "dotenv": "^6.0.0",
+        "fuse.js": "^3.4.5",
+        "mysql": "^2.16.0",
+        "node-fetch": "^2.6.0",
+        "node-html-parser": "^1.1.16",
+        "path": "^0.12.7",
+        "telegraf": "^3.23.1",
+        "telegraf-command-parts": "^1.0.3"
+    }
 }
