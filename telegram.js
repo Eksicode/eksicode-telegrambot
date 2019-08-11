@@ -18,6 +18,7 @@ setInterval(() => fn.fetchUserCount(bot), 3600000);
 
 bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx));
 bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx));
+bot.command("pinle", ctx => fn.cmd.pinMessage(ctx));
 
 bot.on(["new_chat_members", "left_chat_member"], fn.joinedLeftUserHandler);
 
