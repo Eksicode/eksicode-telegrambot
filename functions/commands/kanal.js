@@ -17,12 +17,16 @@ const kanalCommand = ctx => {
                             ) > 0.25
                         );
                     });
-                    ctx.reply(
-                        `Sonuçlar:
+                    if (searchResults.length) {
+                        ctx.reply(
+                            `Sonuçlar:
                         \n${searchResults
                             .map(e => `${e.name}: ${e.link}`)
                             .join("")}`
-                    );
+                        );
+                    } else {
+                        ctx.reply("Wow! Hiç sonuç yok.");
+                    }
                 });
         }
     });
