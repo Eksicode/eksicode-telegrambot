@@ -1,16 +1,16 @@
-# eksiCode Telegram Botu #
+# eksiCode Telegram Botu
 
-## Nedir ##
+## Nedir
 
- Bu script, http://eksicode.org telegram grupları üzerindeki kayıtlı üye sayılarını ölçmek
- ve ilerde chat vb geliştirmeler için yapılmıştır.
+Bu script, http://eksicode.org telegram grupları üzerindeki kayıtlı üye sayılarını ölçmek
+ve chat geliştirmeleri için yazılmaktadır.
 
-### Nasıl Çalıştırılır ###
+### Nasıl Çalıştırılır
 
-* Mysql veritabanını kurun, tabloları oluşturun (bilgi için bizimle iletişime geçebilirsiniz)
+-   Mysql veritabanını kurun, tabloları oluşturun (bilgi için bizimle iletişime geçebilirsiniz)
 
-* Paketleri yükleyin: `npm i`
+-   Paketleri yükleyin: `npm i`
 
-* .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, ve mysql db bağlantı bilgilerini ekleyin.
+-   .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, `API_USER = API_KULLANICI_ADI` `API_PASS = API_PAROLA` ve mysql db bağlantı bilgilerini ekleyin.
 
-* Scripti çalıştırın: `npm run start`
+-   Scripti çalıştırın: `npm run start`
