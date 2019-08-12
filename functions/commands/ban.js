@@ -10,9 +10,9 @@ function banCommand(ctx) {
                     .then(res => res.json())
                     .then(groups => {
                         groups.map(e => {
-                            ctx.kickChatMember(
-                                e.channelID,
-                                ctx.message.reply_to_message.forward_from.id
+                            ctx.telegram.kickChatMember(
+                                chatId = e.channelID,
+                                userId = ctx.message.reply_to_message.forward_from.id
                             );
                         });
                     });

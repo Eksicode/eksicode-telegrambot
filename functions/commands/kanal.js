@@ -21,7 +21,7 @@ function kanalCommand(ctx) {
                             .join("")}`
                 );
             } else {
-                ctx.reply("Wow! Hiç sonuç yok.");
+                ctx.reply("Wow! Hiç sonuç yok. Kullanım: /kanal <sorgu>");
             }
         });
 }
