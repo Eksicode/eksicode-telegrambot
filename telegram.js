@@ -38,7 +38,7 @@ const axios = require('axios');
 
     data = [allGroups[i].members, allGroups[i].id];
 
-    sql = "UPDATE eksicode SET members = ? WHERE id = ?";
+    sql = "UPDATE telegrams SET members = ? WHERE id = ?";
 
     connection.query(sql, data, (error, results, fields) => {
       if (error){
