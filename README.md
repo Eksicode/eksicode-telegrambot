@@ -19,12 +19,12 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Genel
 
--   /kaynak <url>: Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
+-   `/kaynak <url>`: Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
 
--   /kanal <sorgu>: EksiCode kanalları arasında arama yapar.
+-   `/kanal <sorgu>`: EksiCode kanalları arasında arama yapar.
 
 ### Yönetim Komutları
 
--   /pinle <mesaj>: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
+-   `/pinle <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
 
--   /ban: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
+-   `/ban`: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
