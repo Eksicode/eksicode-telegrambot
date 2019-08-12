@@ -11,11 +11,12 @@ function pinCommand(ctx) {
                     .then(groups => {
                         groups.map(e => {
                             ctx.telegram
-                                .sendMessage(e.channelID, args)
+                                .sendMessage(e.channelID, args, { disable_notification: true })
                                 .then(res => {
                                     ctx.telegram.pinChatMessage(
                                         e.channelID,
-                                        res.message_id
+                                        res.message_id,
+                                        { disable_notification: true }
                                     );
                                 });
                         });
