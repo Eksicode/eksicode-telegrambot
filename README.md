@@ -27,4 +27,4 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   /pinle <mesaj>: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
 
--   /ban: Forward edilmiş mesaja cevap olarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
+-   /ban: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
