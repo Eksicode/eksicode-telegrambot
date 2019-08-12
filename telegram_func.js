@@ -13,9 +13,6 @@ const fn = require("./functions");
 
 bot.use(CommandParser());
 
-fn.fetchUserCount(bot);
-setInterval(() => fn.fetchUserCount(bot), 3600000);
-
 bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx));
 bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx));
 bot.command("pin", ctx => fn.cmd.pinCommand(ctx));
