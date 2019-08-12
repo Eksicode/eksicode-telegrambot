@@ -1,26 +1,64 @@
+/**
+ * Bu script, eksicode.org telegram grupları üzerinde ki kayıtlı üye sayılarını ölçmek
+ * ve ilerde chat vb geliştirmeler için yapılmıştır.
+ */
 const path = require("path");
-
 require("dotenv").config({
     path: path.join(__dirname, ".env")
 });
 
 const token = process.env.BOT_TOKEN;
 const Telegraf = require("telegraf");
-const CommandParser = require("telegraf-command-parts");
 const bot = new Telegraf(token);
+const mysql = require("mysql");
+const config = require("../config.js");
+const axios = require("axios");
 
-const fn = require("./functions");
+(async function telegramBot() {
+    let allGroups;
 
-bot.use(CommandParser());
+    axios
+        .get("http://api.eksicode.org/telegrams?_sort=ListOrder:ASC")
+        .then(async function(response) {
+            allGroups = response.data;
+            console.log(response.data.length);
 
-fn.fetchUserCount(bot);
-setInterval(() => fn.fetchUserCount(bot), 3600000);
+            for (let i = 0; i < allGroups.length; i++) {
+                await bot.telegram
+                    .getChatMembersCount(allGroups[i].channelID)
+                    .then(data => {
+                        allGroups[i].members = data;
+                    })
+                    .catch(err =>
+                        console.log(
+                            `${allGroups[i].name} için data çekilemedi.`
+                        )
+                    );
 
-bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx));
-bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx));
-bot.command("pin", ctx => fn.cmd.pinCommand(ctx));
-bot.command("ban", ctx => fn.cmd.banCommand(ctx));
+                delete allGroups[i].channelID;
+            }
 
-bot.on(["new_chat_members", "left_chat_member"], fn.joinedLeftUserHandler);
+            let connection = mysql.createConnection(config);
 
-bot.launch();
+            let sql, data;
+            for (let i = 0; i < allGroups.length; i++) {
+                console.log(allGroups[i].name + ": " + allGroups[i].members);
+
+                data = [allGroups[i].members, allGroups[i].id];
+
+                sql = "UPDATE eksicode SET members = ? WHERE id = ?";
+
+                connection.query(sql, data, (error, results, fields) => {
+                    if (error) {
+                        return console.error(error.message);
+                    }
+                    console.log("Rows affected:", results.affectedRows);
+                });
+            }
+
+            connection.end();
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+})();
