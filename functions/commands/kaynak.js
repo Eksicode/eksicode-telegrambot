@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
 
-function kaynakCommand() {
+function kaynakCommand(ctx) {
     fetch("http://api.eksicode.org/auth/local", {
         method: "POST",
         headers: {
