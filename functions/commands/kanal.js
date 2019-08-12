@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const Fuse = require("fuse.js");
 
-const kanalCommand = ctx => {
+function kanalCommand(ctx) {
     const args = ctx.state.command.args;
     fetch(`http://api.eksicode.org/telegrams`)
         .then(res => res.json())
@@ -24,6 +24,6 @@ const kanalCommand = ctx => {
                 ctx.reply("Wow! Hiç sonuç yok.");
             }
         });
-};
+}
 
 module.exports = kanalCommand;

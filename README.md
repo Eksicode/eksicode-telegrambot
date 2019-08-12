@@ -11,6 +11,20 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   Paketleri yükleyin: `npm i`
 
--   .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, `API_USER = API_KULLANICI_ADI` `API_PASS = API_PAROLA` ve mysql db bağlantı bilgilerini ekleyin.
+-   .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, `API_USER = API_KULLANICI_ADI`, `API_PASS = API_PAROLA`, `ADMIN_CH_ID = TG_ADMINGRUBU_ID` ve mysql db bağlantı bilgilerini ekleyin.
 
 -   Scripti çalıştırın: `npm run start`
+
+## Bot Komutları
+
+### Genel
+
+-   /kaynak <url>: Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
+
+-   /kanal <sorgu>: EksiCode kanalları arasında arama yapar.
+
+### Yönetim Komutları
+
+-   /pinle <mesaj>: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
+
+-   /ban: Forward edilmiş mesaja cevap olarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.

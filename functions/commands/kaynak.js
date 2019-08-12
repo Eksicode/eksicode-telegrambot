@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
 
-const kaynakCommand = ctx => {
+function kaynakCommand() {
     fetch("http://api.eksicode.org/auth/local", {
         method: "POST",
         headers: {
@@ -60,6 +60,6 @@ const kaynakCommand = ctx => {
                     }
                 });
         });
-};
+}
 
 module.exports = kaynakCommand;
