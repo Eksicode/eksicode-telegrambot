@@ -25,6 +25,6 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Yönetim Komutları
 
--   `/pinle <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
+-   `/pin <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
 
 -   `/ban`: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.

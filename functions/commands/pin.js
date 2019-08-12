@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-function banCommand(ctx) {
+function pinCommand(ctx) {
     const args = ctx.state.command.args;
     ctx.telegram
         .getChatMember(process.env.ADMIN_CH_ID, ctx.from.id)
@@ -10,10 +10,14 @@ function banCommand(ctx) {
                     .then(res => res.json())
                     .then(groups => {
                         groups.map(e => {
-                            ctx.kickChatMember(
-                                e.channelID,
-                                ctx.message.reply_to_message.forward_from.id
-                            );
+                            ctx.telegram
+                                .sendMessage(e.channelID, args)
+                                .then(res => {
+                                    ctx.telegram.pinChatMessage(
+                                        e.channelID,
+                                        res.message_id
+                                    );
+                                });
                         });
                     });
             } else {
@@ -23,4 +27,4 @@ function banCommand(ctx) {
         .catch(err => console.log("yetkisiz işlem"));
 }
 
-module.exports = banCommand;
+module.exports = pinCommand;
