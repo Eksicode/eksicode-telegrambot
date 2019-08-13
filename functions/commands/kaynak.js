@@ -25,8 +25,8 @@ function kaynakCommand(ctx) {
                     const requestData = {
                         doc_name: title,
                         doc_link: url,
-                        doc_creator_tg: ctx.from.id,
-                        doc_tg_ch: ctx.chat.id
+                        doc_creator_tg: ctx.message.from.id,
+                        doc_tg_ch: ctx.message.chat.id.toString()
                     };
                     fetch("http://api.eksicode.org/kaynaklars", {
                         method: "POST",
@@ -37,7 +37,10 @@ function kaynakCommand(ctx) {
                         body: JSON.stringify(requestData)
                     })
                         .then(res => res.json())
-                        .then(sad => {
+                        .then(out => {
+                            if (out.error) {
+                                ctx.reply(`Hata ${out.statusCode}: Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin.`)
+                            }
                             ctx.reply(
                                 `Teşekkürler ${
                                     ctx.from.first_name
