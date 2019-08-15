@@ -28,3 +28,11 @@ ve chat geliştirmeleri için yazılmaktadır.
 -   `/pin <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
 
 -   `/ban`: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
+
+## Kanal Bulunamadı hatası
+
+Siz de bu repoyu forklayıp `kanalBulunamadi.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.
+
+## .pinignore dosyası
+
+`/pin` komutunun çalışmamasını istediğiniz kanalın ID'lerini .pinignore dosyasına ekleyerek istisnalar oluşturabilirsiniz.

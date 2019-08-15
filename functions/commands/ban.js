@@ -11,8 +11,10 @@ function banCommand(ctx) {
                     .then(groups => {
                         groups.map(e => {
                             ctx.telegram.kickChatMember(
-                                chatId = e.channelID,
-                                userId = ctx.message.reply_to_message.forward_from.id
+                                (chatId = e.channelID),
+                                (userId =
+                                    ctx.message.reply_to_message.forward_from
+                                        .id)
                             );
                         });
                     });

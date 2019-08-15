@@ -1,14 +1,14 @@
 const fetch = require("node-fetch");
 const Fuse = require("fuse.js");
 
-function kanalCommand(ctx) {
+function kanalCommand(ctx, kanalBulunamadi) {
     const args = ctx.state.command.args;
     fetch(`http://api.eksicode.org/telegrams`)
         .then(res => res.json())
         .then(channels => {
             if (args == "tümü") {
                 ctx.replyWithMarkdown(
-                    `Kanallar:
+                    `Tüm Kanallar:
                     \n${channels.map(e => `[${e.name}](${e.link})\n`).join("")}`
                 );
             } else {
@@ -27,7 +27,14 @@ function kanalCommand(ctx) {
                             .join("")}`
                     );
                 } else {
-                    ctx.reply("Wow! Hiç sonuç yok. Kullanım: /kanal <sorgu>");
+                    const rand = Math.floor(
+                        Math.random() * kanalBulunamadi.length
+                    );
+                    ctx.reply(
+                        `${
+                            kanalBulunamadi[rand]
+                        } Hiç sonuç yok. Kullanım: /kanal <sorgu>`
+                    );
                 }
             }
         });
