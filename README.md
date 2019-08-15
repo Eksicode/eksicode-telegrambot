@@ -32,3 +32,7 @@ ve chat geliştirmeleri için yazılmaktadır.
 ## Kanal Bulunamadı hatası
 
 Siz de bu repoyu forklayıp `kanalBulunamadi.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.
+
+## .pinignore dosyası
+
+`/pin` komutunun çalışmamasını istediğiniz kanalın ID'lerini .pinignore dosyasına ekleyerek istisnalar oluşturabilirsiniz.
