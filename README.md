@@ -25,6 +25,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `/kanal <sorgu>`: EksiCode kanalları arasında arama yapar.
 
+-   `/discord`: Discord sunucusunun linkini gönderir.
+
 ### Yönetim Komutları
 
 -   `/pin <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
