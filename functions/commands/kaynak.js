@@ -21,7 +21,12 @@ function kaynakCommand(ctx) {
             fetch(url)
                 .then(res => res.text())
                 .then(html => {
-                    const title = parse(html).querySelector("title").rawText;
+                    let title
+                    try {
+                        title = parse(html).querySelector("title").rawText;
+                    } catch {
+                        title = url
+                    }
                     const requestData = {
                         doc_name: title,
                         doc_link: url,
@@ -58,6 +63,7 @@ function kaynakCommand(ctx) {
                         ctx.reply(
                             "Geçersiz kullanım. Kullanım: /kaynak <link>"
                         );
+                        console.error(err)
                     } else if (err.name == "FetchError") {
                         ctx.reply("Link geçersiz. Lütfen tekrar deneyin.");
                     }
