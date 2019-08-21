@@ -25,7 +25,7 @@ function kaynakCommand(ctx) {
                     try {
                         title = parse(html).querySelector("title").rawText;
                     } catch {
-                        title = ""
+                        title = url
                     }
                     const requestData = {
                         doc_name: title,
