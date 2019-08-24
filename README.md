@@ -19,7 +19,7 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Genel
 
--  `/help` veya `/yardım`: Bot komutlarını listeler.
+-  `/help` veya `/yardim`: Bot komutlarını listeler.
 
 -   `/kaynak <url>`: Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
 

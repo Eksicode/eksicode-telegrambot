@@ -1,6 +1,8 @@
+const replyConfig = require("./replyConfig");
+
 function helpCommand(ctx) {
     ctx.replyWithMarkdown(
-`• **Bot Komutları**
+        `• **Bot Komutları**
 
 -  \`/help\` veya \`/yardım\`: Bot komutlarını listeler.
     
@@ -12,7 +14,8 @@ function helpCommand(ctx) {
 
 • **Kanal Bulunamadı hatası**
 
-Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`kanalBulunamadi.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`
+Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`kanalBulunamadi.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`,
+        replyConfig(ctx.message.message_id)
     );
 }
 
