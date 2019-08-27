@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
+const replyConfig = require("./replyConfig");
 
 function kaynakCommand(ctx) {
     fetch("http://api.eksicode.org/auth/local", {
@@ -21,11 +22,11 @@ function kaynakCommand(ctx) {
             fetch(url)
                 .then(res => res.text())
                 .then(html => {
-                    let title
+                    let title;
                     try {
                         title = parse(html).querySelector("title").rawText;
                     } catch {
-                        title = url
+                        title = url;
                     }
                     const requestData = {
                         doc_name: title,
@@ -44,28 +45,35 @@ function kaynakCommand(ctx) {
                         .then(res => res.json())
                         .then(out => {
                             if (out.error) {
-                                ctx.reply(`Hata ${out.statusCode}: Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin.`)
+                                ctx.reply(
+                                    `Hata ${out.statusCode}: Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin.`,
+                                    replyConfig(ctx.message.message_id)
+                                );
                             }
                             ctx.reply(
-                                `Teşekkürler ${
-                                    ctx.from.first_name
-                                }! Yönetici ekibimiz en kısa zamanda inceleyip onaylayacak.`
+                                `Teşekkürler ${ctx.from.first_name}! Yönetici ekibimiz en kısa zamanda inceleyip onaylayacak.`,
+                                replyConfig(ctx.message.message_id)
                             );
                         })
                         .catch(err =>
                             ctx.reply(
-                                "Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin."
+                                "Eksicode sunucularıyla bağlantı kuramıyoruz. Lütfen daha sonra deneyin.",
+                                replyConfig(ctx.message.message_id)
                             )
                         );
                 })
                 .catch(err => {
                     if (err.name == "TypeError") {
                         ctx.reply(
-                            "Geçersiz kullanım. Kullanım: /kaynak <link>"
+                            "Geçersiz kullanım. Kullanım: /kaynak <link>",
+                            replyConfig(ctx.message.message_id)
                         );
-                        console.error(err)
+                        console.error(err);
                     } else if (err.name == "FetchError") {
-                        ctx.reply("Link geçersiz. Lütfen tekrar deneyin.");
+                        ctx.reply(
+                            "Link geçersiz. Lütfen tekrar deneyin.",
+                            replyConfig(ctx.message.message_id)
+                        );
                     }
                 });
         });
