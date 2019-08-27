@@ -1,12 +1,13 @@
 const fetch = require("node-fetch");
 const Fuse = require("fuse.js");
-const replyConfig = require("./replyConfig")
+const replyConfig = require("./replyConfig");
+const channels = require("../../groups.json");
 
 function kanalCommand(ctx, kanalBulunamadi) {
     const args = ctx.state.command.args;
-    fetch(`http://api.eksicode.org/telegrams`)
-        .then(res => res.json())
-        .then(channels => {
+    //fetch(`http://api.eksicode.org/telegrams`)
+    //    .then(res => res.json())
+    //    .then(channels => {
             if (args == "tümü") {
                 ctx.replyWithMarkdown(
                     `Tüm Kanallar:
@@ -41,7 +42,7 @@ function kanalCommand(ctx, kanalBulunamadi) {
                     );
                 }
             }
-        });
+        //});
 }
 
 module.exports = kanalCommand;
