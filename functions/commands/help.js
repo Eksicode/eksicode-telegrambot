@@ -8,9 +8,9 @@ function helpCommand(ctx) {
         
 - \`/yardim\` - Komutları listeler.
         
-- \`/kaynak\` - Kullanım: /kaynak \[URL\]. Kaynak linklerini veritabanımıza yükler.
+- \`/kaynak\` - Kullanım: /kaynak <URL>. Kaynak linklerini veritabanımıza yükler.
         
-- \`/kanal\` - Kullanım: /kanal \[Sorgu | tümü\]. Kanalları listeler.
+- \`/kanal\` - Kullanım: /kanal <Sorgu | tümü>. Kanalları listeler.
         
 -   \`/discord\` -  Discord sunucumuz.
 
