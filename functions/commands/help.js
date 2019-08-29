@@ -4,13 +4,15 @@ function helpCommand(ctx) {
     ctx.replyWithMarkdown(
         `• **Bot Komutları**
 
--  \`/help\` veya \`/yardım\`: Bot komutlarını listeler.
-    
--   \`/kaynak <url>\` (ÇALIŞMIYOR): Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
-    
--   \`/kanal <sorgu>\`: EksiCode kanalları arasında arama yapar. 
-    
--   \`/discord\`: Discord sunucusunun linkini gönderir.
+- `/help` - Komutları listeler.
+        
+- `/yardim` - Komutları listeler.
+        
+- `/kaynak` - Kullanım: /kaynak [URL]. Kaynak linklerini veritabanımıza yükler.
+        
+- `/kanal` - Kullanım: /kanal [Sorgu | tümü]. Kanalları listeler.
+        
+-   `/discord` -  Discord sunucumuz.
 
 • **Kanal Bulunamadı hatası**
 

@@ -19,13 +19,15 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Genel
 
--  `/help` veya `/yardim`: Bot komutlarını listeler.
+- `/help` - Komutları listeler.
 
--   `/kaynak <url>`: Verilen URL kaynak veritabanına sayfa başlığı ile birlikte eklenir.
+- `/yardim` - Komutları listeler.
 
--   `/kanal <sorgu>`: EksiCode kanalları arasında arama yapar.
+- `/kaynak` - Kullanım: /kaynak [URL]. Kaynak linklerini veritabanımıza yükler.
 
--   `/discord`: Discord sunucusunun linkini gönderir.
+- `/kanal` - Kullanım: /kanal [Sorgu | tümü]. Kanalları listeler.
+
+-   `/discord` -  Discord sunucumuz.
 
 ### Yönetim Komutları
 
