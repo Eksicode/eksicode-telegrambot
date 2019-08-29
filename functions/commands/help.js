@@ -4,15 +4,15 @@ function helpCommand(ctx) {
     ctx.replyWithMarkdown(
         `• **Bot Komutları**
 
-- `/help` - Komutları listeler.
+- \`/help\` - Komutları listeler.
         
-- `/yardim` - Komutları listeler.
+- \`/yardim\` - Komutları listeler.
         
-- `/kaynak` - Kullanım: /kaynak [URL]. Kaynak linklerini veritabanımıza yükler.
+- \`/kaynak\` - Kullanım: /kaynak [URL]. Kaynak linklerini veritabanımıza yükler.
         
-- `/kanal` - Kullanım: /kanal [Sorgu | tümü]. Kanalları listeler.
+- \`/kanal\` - Kullanım: /kanal [Sorgu | tümü]. Kanalları listeler.
         
--   `/discord` -  Discord sunucumuz.
+-   \`/discord\` -  Discord sunucumuz.
 
 • **Kanal Bulunamadı hatası**
 
