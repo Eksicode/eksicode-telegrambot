@@ -23,6 +23,7 @@ bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx, errorMessage));
 bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx, errorMessage));
 bot.command("pin", ctx => fn.cmd.pinCommand(ctx));
 bot.command("ban", ctx => fn.cmd.banCommand(ctx));
+bot.command("unban", ctx => fn.cmd.unbanCommand(ctx));
 bot.command(["yardim", "help"], ctx => fn.cmd.helpCommand(ctx));
 bot.command("discord", ctx => fn.cmd.discordCommand(ctx));
 
