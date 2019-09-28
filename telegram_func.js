@@ -12,15 +12,15 @@ const bot = new Telegraf(token);
 
 const fn = require("./functions");
 
-const kanalBulunamadi = fs
-    .readFileSync("kanalBulunamadi.txt")
+const errorMessage = fs
+    .readFileSync("hataMesaji.txt")
     .toString()
     .split("\r\n");
 
 bot.use(CommandParser());
 
-bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx));
-bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx, kanalBulunamadi));
+bot.command("kaynak", ctx => fn.cmd.kaynakCommand(ctx, errorMessage));
+bot.command("kanal", ctx => fn.cmd.kanalCommand(ctx, errorMessage));
 bot.command("pin", ctx => fn.cmd.pinCommand(ctx));
 bot.command("ban", ctx => fn.cmd.banCommand(ctx));
 bot.command(["yardim", "help"], ctx => fn.cmd.helpCommand(ctx));

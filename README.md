@@ -35,9 +35,9 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `/ban`: Forward edilmiş mesajı alıntılayarak kullanılır. Forward edilen kişiyi tüm EksiCode kanallarından atar.
 
-## Kanal Bulunamadı hatası
+## Hata Mesajları
 
-Siz de bu repoyu forklayıp `kanalBulunamadi.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.
+Siz de bu repoyu forklayıp `hataMesaji.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.
 
 ## .pinignore dosyası
 

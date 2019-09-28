@@ -3,8 +3,7 @@ const { parse } = require("node-html-parser");
 const replyConfig = require("./replyConfig");
 
 function kaynakCommand(ctx) {
-    ctx.reply("Kaynak komutu şimdilik çalışmıyor. Gönderdiğiniz linkleri sonradan işleyip veritabanımıza yükleyeceğiz.", replyConfig(ctx.message.message_id))
-    /*fetch("http://api.eksicode.org/auth/local", {
+    fetch("http://api.eksicode.org/auth/local", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -77,7 +76,7 @@ function kaynakCommand(ctx) {
                         );
                     }
                 });
-        });*/
+        });
 }
 
 module.exports = kaynakCommand;
