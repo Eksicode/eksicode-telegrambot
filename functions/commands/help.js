@@ -14,9 +14,9 @@ function helpCommand(ctx) {
         
 -   \`/discord\` -  Discord sunucumuz.
 
-• **Kanal Bulunamadı hatası**
+• **Hata mesajı**
 
-Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`kanalBulunamadi.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`,
+Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`hataMesaji.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`,
         replyConfig(ctx.message.message_id)
     );
 }
