@@ -4,7 +4,7 @@ services:
     container_name: eksicodeBot
     build: ./bot
     volumes:
-      - ./bot:/var/bot
+      - ./:/var/bot
     env_file:
      - .env
     # environment:
@@ -14,11 +14,6 @@ services:
     #   - DB_DATABASE=eksicode
     #   - DB_USERNAME=root
     #   - DB_PASSWORD=eksicode
-    links:
-      - database
-    depends_on:
-      - database
-    restart: on-failure
     networks:
       - eksicode_nw
 
