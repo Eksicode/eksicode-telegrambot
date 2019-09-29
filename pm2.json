@@ -1,0 +1,11 @@
+{
+    "apps": [{
+      "name": "eksicodeBot-user",
+      "script": "telegram.js",
+      "instances": 1
+    }, {
+      "name": "esicodeBot-func",
+      "script": "telegram_func.js",
+      "instances": 4
+    }]
+  }

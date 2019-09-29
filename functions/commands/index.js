@@ -4,6 +4,5 @@ const pinCommand = require("./pin");
 const banCommand = require("./ban");
 const helpCommand = require("./help");
 const discordCommand = require("./discord");
-const unbanCommand = require("./unban");
 
-module.exports = { kaynakCommand, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand, unbanCommand };
+module.exports = { kaynakCommand, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand };

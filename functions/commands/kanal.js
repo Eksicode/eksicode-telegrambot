@@ -1,8 +1,7 @@
 const fetch = require("node-fetch");
 const Fuse = require("fuse.js");
-const replyConfig = require("./replyConfig");
 
-function kanalCommand(ctx, hata) {
+function kanalCommand(ctx, kanalBulunamadi) {
     const args = ctx.state.command.args;
     fetch(`http://api.eksicode.org/telegrams`)
         .then(res => res.json())
@@ -10,10 +9,7 @@ function kanalCommand(ctx, hata) {
             if (args == "tümü") {
                 ctx.replyWithMarkdown(
                     `Tüm Kanallar:
-                    \n${channels
-                        .map(e => `[${e.name}](${e.link})\n`)
-                        .join("")}`,
-                    replyConfig(ctx.message.message_id)
+                    \n${channels.map(e => `[${e.name}](${e.link})\n`).join("")}`
                 );
             } else {
                 const fuse = new Fuse(channels, {
@@ -28,16 +24,16 @@ function kanalCommand(ctx, hata) {
                         `Sonuçlar:
                         \n${searchResults
                             .map(e => `[${e.name}](${e.link})\n`)
-                            .join("")}`,
-                        replyConfig(ctx.message.message_id)
+                            .join("")}`
                     );
                 } else {
                     const rand = Math.floor(
-                        Math.random() * hata.length
+                        Math.random() * kanalBulunamadi.length
                     );
                     ctx.reply(
-                        `${hata[rand]} Hiç sonuç yok. Kullanım: /kanal <sorgu>`,
-                        replyConfig(ctx.message.message_id)
+                        `${
+                            kanalBulunamadi[rand]
+                        } Hiç sonuç yok. Kullanım: /kanal <sorgu>`
                     );
                 }
             }

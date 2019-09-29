@@ -1,0 +1,29 @@
+version: '3'
+services:
+  bot:
+    container_name: eksicodeBot
+    build: ./bot
+    volumes:
+      - ./bot:/var/bot
+    env_file:
+     - .env
+    # environment:
+    #   - DB_CONNECTION=mysql
+    #   - DB_HOST=database
+    #   - DB_PORT=3306
+    #   - DB_DATABASE=eksicode
+    #   - DB_USERNAME=root
+    #   - DB_PASSWORD=eksicode
+    links:
+      - database
+    depends_on:
+      - database
+    restart: on-failure
+    networks:
+      - eksicode_nw
+
+volumes:
+  bot:
+
+networks:
+  eksicode_nw:
