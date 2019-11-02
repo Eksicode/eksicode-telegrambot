@@ -7,13 +7,15 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Nasıl Çalıştırılır
 
+-   UYARI: Docker çalışırken git branch'ını değiştirmeyin. 
+
 -   Mysql veritabanını kurun, tabloları oluşturun (bilgi için bizimle iletişime geçebilirsiniz)
 
 -   Paketleri yükleyin: `npm i`
 
 -   .env file oluşturun ve `BOT_TOKEN = TOKEN_KODU`, `API_USER = API_KULLANICI_ADI`, `API_PASS = API_PAROLA`, `ADMIN_CH_ID = TG_ADMINGRUBU_ID` ve mysql db bağlantı bilgilerini ekleyin.
 
--   Scripti çalıştırın: `npm run start`
+-   Docker'ı çalıştırın: `docker-compose up --build`
 
 ## Bot Komutları
 
