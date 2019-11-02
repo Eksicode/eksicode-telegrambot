@@ -3,7 +3,7 @@ const { parse } = require("node-html-parser");
 const apiAuth = require("../apiAuth");
 const Markup = require("telegraf/markup");
 
-const state = { user: {}, pagination: {} };
+const state = { user: {} };
 
 function kaynakCommand(ctx) {
   ctx.reply(`Ekşicode kaynak arşivine hoşgeldiniz!`, {
