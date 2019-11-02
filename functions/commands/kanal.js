@@ -1,43 +1,30 @@
 const fetch = require("node-fetch");
-const Fuse = require("fuse.js");
+const replyConfig = require("./replyConfig");
 
-function kanalCommand(ctx, kanalBulunamadi) {
-    const args = ctx.state.command.args;
-    fetch(`http://api.eksicode.org/telegrams`)
-        .then(res => res.json())
-        .then(channels => {
-            if (args == "tümü") {
-                ctx.replyWithMarkdown(
-                    `Tüm Kanallar:
-                    \n${channels.map(e => `[${e.name}](${e.link})\n`).join("")}`
-                );
-            } else {
-                const fuse = new Fuse(channels, {
-                    shouldSort: true,
-                    threshold: 0.3,
-                    minMatchCharLength: 1,
-                    keys: ["name"]
-                });
-                const searchResults = fuse.search(args);
-                if (searchResults.length) {
-                    ctx.replyWithMarkdown(
-                        `Sonuçlar:
-                        \n${searchResults
-                            .map(e => `[${e.name}](${e.link})\n`)
-                            .join("")}`
-                    );
-                } else {
-                    const rand = Math.floor(
-                        Math.random() * kanalBulunamadi.length
-                    );
-                    ctx.reply(
-                        `${
-                            kanalBulunamadi[rand]
-                        } Hiç sonuç yok. Kullanım: /kanal <sorgu>`
-                    );
-                }
-            }
-        });
+async function kanalCommand(ctx, kanalBulunamadi) {
+  const args = ctx.state.command.args;
+  if (args) {
+    const res = await fetch(
+      `http://api.eksicode.org/telegrams?name_contains=${
+        args == "tümü" ? "" : args
+      }`
+    );
+    const channels = await res.json();
+    if (channels.length) {
+      ctx.replyWithMarkdown(
+        `Sonuçlar:
+                \n${channels.map(e => `[${e.name}](${e.link})\n`).join("")}`
+      );
+    } else {
+      const rand = Math.floor(Math.random() * kanalBulunamadi.length);
+      ctx.reply(
+        `${kanalBulunamadi[rand]} Hiç sonuç yok. Kullanım: /kanal <sorgu|tümü>`,
+        replyConfig
+      );
+    }
+  } else {
+      ctx.reply("Kullanım: /kanal <sorgu|tümü>", replyConfig);
+  }
 }
 
 module.exports = kanalCommand;

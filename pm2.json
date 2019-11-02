@@ -2,10 +2,11 @@
     "apps": [{
       "name": "eksicodeBot-user",
       "script": "telegram.js",
-      "instances": 1
+      "instances": 1,
+      "restart_delay": 43200000
     }, {
-      "name": "esicodeBot-func",
+      "name": "eksicodeBot-func",
       "script": "telegram_func.js",
-      "instances": 4
+      "instances": 1
     }]
   }
