@@ -2,7 +2,7 @@ version: '3'
 services:
   bot:
     container_name: eksicodeBot
-    build: ./bot
+    build: ./
     volumes:
       - ./:/var/bot
     env_file:
