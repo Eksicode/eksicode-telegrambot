@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 
 async function unbanCommand(ctx) {
-  const groups = await fetch("http://api.eksicode.org/telegrams").json();
+  const request = await fetch("http://api.eksicode.org/telegrams");
+  const groups = await request.json();
 
   try {
     const member = await ctx.telegram.getChatMember(
