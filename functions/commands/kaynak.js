@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
-const apiAuth = require("../apiAuth");
+const apiAuth = require("../utilities/apiAuth");
 const Markup = require("telegraf/markup");
+const errorMessage = require("../utilities/randomErrorMessage");
 
 const state = { user: {} };
 
@@ -61,7 +62,7 @@ async function kaynakEkleApi(ctx) {
         loadingMessage.message_id
       );
       return ctx.reply(
-        "Bir hata oluştu. Lütfen geçerli bir bağlantı gönderdiğinizden emin olun.",
+        `${errorMessage()} Bir hata oluştu. Lütfen geçerli bir bağlantı gönderdiğinizden emin olun.`,
         { reply_to_message_id: ctx.message.message_id }
       );
     }
@@ -96,7 +97,7 @@ async function kaynakEkleApi(ctx) {
         loadingMessage.chat.id,
         loadingMessage.message_id
       );
-      ctx.reply("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.", {
+      ctx.reply(`${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`, {
         reply_to_message_id: ctx.message.message_id
       });
     }
@@ -108,10 +109,17 @@ async function kaynakAraApi(ctx) {
     ctx.reply("İşleminiz iptal edildi.");
   } else {
     const resultArray = await pagination(ctx.message.text, 0);
-    ctx.reply(`Sayfa: 1`, {
-      reply_to_message_id: ctx.message.message_id,
-      reply_markup: Markup.inlineKeyboard(resultArray)
-    });
+    if (resultArray.length > 1) {
+      ctx.reply(`Sayfa: 1`, {
+        reply_to_message_id: ctx.message.message_id,
+        reply_markup: Markup.inlineKeyboard(resultArray)
+      });
+    } else {
+      ctx.reply(
+        `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`,
+        { reply_to_message_id: ctx.message.message_id }
+      );
+    }
   }
 }
 
@@ -162,12 +170,16 @@ async function pagination(query, pageNum) {
 
 async function fetchResources(query, pageNum) {
   const request = await fetch(
-    `http://api.eksicode.org/kaynaklars?doc_name_contains=${query}&_start=${pageNum *
-      5}&_limit=5`
+    encodeURI(
+      `http://api.eksicode.org/kaynaklars?doc_name_contains=${query}&_start=${pageNum *
+        5}&_limit=5`
+    )
   );
   const resources = await request.json();
   const pageCountReq = await fetch(
-    `http://api.eksicode.org/kaynaklars/count?doc_name_contains=${query}`
+    encodeURI(
+      `http://api.eksicode.org/kaynaklars/count?doc_name_contains=${query}`
+    )
   );
   const pageCount = await pageCountReq.text();
   return { resources, pageCount: Math.ceil(parseInt(pageCount) / 5) };
