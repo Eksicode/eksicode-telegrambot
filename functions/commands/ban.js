@@ -1,28 +1,28 @@
 const fetch = require("node-fetch");
 
-function banCommand(ctx) {
-    const args = ctx.state.command.args;
-    ctx.telegram
-        .getChatMember(process.env.ADMIN_CH_ID, ctx.from.id)
-        .then(res => {
-            if (res.status == "administrator" || res.status == "creator") {
-                fetch("http://api.eksicode.org/telegrams")
-                    .then(res => res.json())
-                    .then(groups => {
-                        groups.map(e => {
-                            ctx.telegram.kickChatMember(
-                                (chatId = e.channelID),
-                                (userId =
-                                    ctx.message.reply_to_message.forward_from
-                                        .id)
-                            );
-                        });
-                    });
-            } else {
-                console.log("yetkisiz işlem");
-            }
-        })
-        .catch(err => console.log("yetkisiz işlem"));
+async function banCommand(ctx) {
+  const request = await fetch("http://api.eksicode.org/telegrams");
+  const groups = await request.json();
+  
+  try {
+    const member = await ctx.telegram.getChatMember(
+      process.env.ADMIN_CH_ID,
+      ctx.from.id
+    );
+
+    if (member.status == "administrator" || member.status == "creator") {
+      groups.map(e => {
+        ctx.telegram.kickChatMember(
+          (chatId = e.channelID),
+          (userId = ctx.message.reply_to_message.forward_from.id)
+        );
+      });
+    } else {
+      console.log("yetkisiz işlem");
+    }
+  } catch (err) {
+    console.log("yetkisiz işlem");
+  }
 }
 
 module.exports = banCommand;

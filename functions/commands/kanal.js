@@ -1,47 +1,32 @@
 const fetch = require("node-fetch");
-const Fuse = require("fuse.js");
 const replyConfig = require("./replyConfig");
+const errorMessage = require("../utilities/randomErrorMessage");
 
-function kanalCommand(ctx, hata) {
-    const args = ctx.state.command.args;
-    fetch(`http://api.eksicode.org/telegrams`)
-        .then(res => res.json())
-        .then(channels => {
-            if (args == "tümü") {
-                ctx.replyWithMarkdown(
-                    `Tüm Kanallar:
-                    \n${channels
-                        .map(e => `[${e.name}](${e.link})\n`)
-                        .join("")}`,
-                    replyConfig(ctx.message.message_id)
-                );
-            } else {
-                const fuse = new Fuse(channels, {
-                    shouldSort: true,
-                    threshold: 0.3,
-                    minMatchCharLength: 1,
-                    keys: ["name"]
-                });
-                const searchResults = fuse.search(args);
-                if (searchResults.length) {
-                    ctx.replyWithMarkdown(
-                        `Sonuçlar:
-                        \n${searchResults
-                            .map(e => `[${e.name}](${e.link})\n`)
-                            .join("")}`,
-                        replyConfig(ctx.message.message_id)
-                    );
-                } else {
-                    const rand = Math.floor(
-                        Math.random() * hata.length
-                    );
-                    ctx.reply(
-                        `${hata[rand]} Hiç sonuç yok. Kullanım: /kanal <sorgu>`,
-                        replyConfig(ctx.message.message_id)
-                    );
-                }
-            }
-        });
+async function kanalCommand(ctx) {
+  const args = ctx.state.command.args;
+  if (args) {
+    const res = await fetch(
+      encodeURI(
+        `http://api.eksicode.org/telegrams?name_contains=${
+          args == "tümü" ? "" : args
+        }`
+      )
+    );
+    const channels = await res.json();
+    if (channels.length) {
+      ctx.replyWithMarkdown(
+        `Sonuçlar:
+                \n${channels.map(e => `[${e.name}](${e.link})\n`).join("")}`
+      );
+    } else {
+      ctx.reply(
+        `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`,
+        replyConfig
+      );
+    }
+  } else {
+    ctx.reply("Kullanım: /kanal <sorgu|tümü>", replyConfig);
+  }
 }
 
 module.exports = kanalCommand;
