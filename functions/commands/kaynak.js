@@ -6,46 +6,30 @@ const errorMessage = require("../utilities/randomErrorMessage");
 
 const state = { user: {} };
 
-function kaynakCommand(ctx) {
-  ctx.reply(`Ekşicode kaynak arşivine hoşgeldiniz!`, {
-    reply_to_message_id: ctx.message.message_id,
-    reply_markup: Markup.keyboard([["🔎 Kaynak Ara", "ℹ️ Kaynak Ekle"]])
-      .oneTime()
-      .selective()
-      .resize()
-  });
-}
-
-function kaynakEkle(ctx) {
-  if (!state.user[ctx.from.id]) {
-    state.user[ctx.from.id] = {};
-    state.user[ctx.from.id].inlineCommand = "addResource";
-  }
-  ctx.reply(
-    'Eklemek istediğiniz kaynağın bağlantısını yapıştırın. (iptal etmek için "iptal" yazın.)',
-    {
-      reply_to_message_id: ctx.message.message_id,
-      reply_markup: Markup.forceReply().selective()
+async function kaynakCommand(ctx) {
+  const args = ctx.state.command.args;
+  if (args.length) {
+    await kaynakEkle(ctx, args);
+  } else {
+    if (!state.user[ctx.from.id]) {
+      state.user[ctx.from.id] = {};
+      state.user[ctx.from.id].inlineCommand = "addResource";
     }
-  );
-}
-
-function kaynakAra(ctx) {
-  if (!state.user[ctx.from.id]) {
-    state.user[ctx.from.id] = {};
-    state.user[ctx.from.id].inlineCommand = "searchResource";
+    ctx.reply(
+      'Eklemek istediğiniz kaynağın bağlantısını yapıştırın. (iptal etmek için "iptal" yazın.)',
+      {
+        reply_to_message_id: ctx.message.message_id,
+        reply_markup: Markup.forceReply().selective()
+      }
+    );
   }
-  ctx.reply('Sorgunuzu yazın. (iptal etmek için "iptal" yazın.)', {
-    reply_to_message_id: ctx.message.message_id,
-    reply_markup: Markup.forceReply().selective()
-  });
 }
 
-async function kaynakEkleApi(ctx) {
-  const url = ctx.message.text.startsWith("http")
-    ? ctx.message.text
-    : "http://" + ctx.message.text;
-  if (ctx.message.text == "iptal") {
+async function kaynakEkle(ctx, link) {
+  const url = link.startsWith("http")
+    ? link
+    : "http://" + link;
+  if (link == "iptal") {
     ctx.reply("İşleminiz iptal edildi.");
   } else {
     const loadingMessage = await ctx.reply("Kaynak ekleniyor...", {
@@ -97,114 +81,27 @@ async function kaynakEkleApi(ctx) {
         loadingMessage.chat.id,
         loadingMessage.message_id
       );
-      ctx.reply(`${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`, {
-        reply_to_message_id: ctx.message.message_id
-      });
-    }
-  }
-}
-
-async function kaynakAraApi(ctx) {
-  if (ctx.message.text == "iptal") {
-    ctx.reply("İşleminiz iptal edildi.");
-  } else {
-    const resultArray = await pagination(ctx.message.text, 0);
-    if (resultArray.length > 1) {
-      ctx.reply(`Sayfa: 1`, {
-        reply_to_message_id: ctx.message.message_id,
-        reply_markup: Markup.inlineKeyboard(resultArray)
-      });
-    } else {
       ctx.reply(
-        `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`,
-        { reply_to_message_id: ctx.message.message_id }
+        `${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`,
+        {
+          reply_to_message_id: ctx.message.message_id
+        }
       );
     }
   }
 }
 
-async function pageSwitch(ctx) {
-  const query = ctx.callbackQuery.message.reply_to_message.text;
-  const pageNum = parseInt(ctx.callbackQuery.data);
-  if (pageNum + 1 !== parseInt(ctx.callbackQuery.message.text.split(": ")[1])) {
-    const resultArray = await pagination(query, pageNum);
-    ctx.editMessageText(`Sayfa: ${pageNum + 1}`, {
-      reply_to_message_id: query.message_id,
-      reply_markup: Markup.inlineKeyboard(resultArray)
-    });
-  } else {
-    ctx.answerCbQuery();
-  }
-}
-
-async function pagination(query, pageNum) {
-  const data = await fetchResources(query, pageNum);
-  let resultArray = [];
-  data.resources.map(e => {
-    resultArray.push([
-      {
-        text: e.doc_name,
-        url: e.doc_link
-      }
-    ]);
-  });
-  resultArray.push([{ text: `« 1`, callback_data: `${0}` }]);
-  resultArray[resultArray.length - 1].push({
-    text: `‹ ${pageNum > 0 ? pageNum : 1}`,
-    callback_data: `${pageNum > 0 ? pageNum - 1 : 0}`
-  });
-  resultArray[resultArray.length - 1].push({
-    text: `• ${pageNum + 1} •`,
-    callback_data: `${pageNum}`
-  });
-  resultArray[resultArray.length - 1].push({
-    text: `${pageNum + 2} ›`,
-    callback_data: `${pageNum + 1}`
-  });
-  resultArray[resultArray.length - 1].push({
-    text: `${data.pageCount} »`,
-    callback_data: `${data.pageCount - 1}`
-  });
-  return resultArray;
-}
-
-async function fetchResources(query, pageNum) {
-  const request = await fetch(
-    encodeURI(
-      `http://api.eksicode.org/kaynaklars?doc_name_contains=${query}&_start=${pageNum *
-        5}&_limit=5`
-    )
-  );
-  const resources = await request.json();
-  const pageCountReq = await fetch(
-    encodeURI(
-      `http://api.eksicode.org/kaynaklars/count?doc_name_contains=${query}`
-    )
-  );
-  const pageCount = await pageCountReq.text();
-  return { resources, pageCount: Math.ceil(parseInt(pageCount) / 5) };
-}
-
 async function kaynakListen(ctx) {
   if (
-    state.user[ctx.from.id] &&
-    state.user[ctx.from.id].inlineCommand == "searchResource"
-  ) {
-    state.user[ctx.from.id] = null;
-    await kaynakAraApi(ctx);
-  } else if (
     state.user[ctx.from.id] &&
     state.user[ctx.from.id].inlineCommand == "addResource"
   ) {
     state.user[ctx.from.id] = null;
-    await kaynakEkleApi(ctx);
+    await kaynakEkle(ctx, ctx.message.text);
   }
 }
 
 module.exports = {
-  kaynakAra,
   kaynakCommand,
-  kaynakEkle,
-  kaynakListen,
-  pageSwitch
+  kaynakListen
 };
