@@ -4,7 +4,7 @@ function helpCommand(ctx) {
 
 -  \`/help\` veya \`/yardım\`: Bot komutlarını listeler.
     
--   \`/kaynak\`: Ekşicode kaynak arayüzünü açar.
+-   \`/kaynak <URL>\`: Kaynak URL'sini Ekşicode veritabanına ekler.
     
 -   \`/kanal <sorgu | tümü>\`: EksiCode kanalları arasında arama yapar. 
     

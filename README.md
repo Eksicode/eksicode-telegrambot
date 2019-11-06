@@ -25,9 +25,9 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 - `/yardim` - Komutları listeler.
 
-- `/kaynak` - Kullanım: /kaynak. Ekşicode Kaynak arayüzünü açar.
+-   `/kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
 
-- `/kanal` - Kullanım: /kanal <Sorgu | tümü>. Kanalları listeler.
+- `/kanal <Sorgu | tümü>` - kanalları listeler.
 
 -   `/discord` -  Discord sunucumuz.
 
