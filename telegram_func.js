@@ -23,8 +23,6 @@ bot.command("discord", ctx => fn.cmd.discordCommand(ctx));
 
 bot.on(["new_chat_members", "left_chat_member"], fn.joinedLeftUserHandler);
 
-bot.hears("🔎 Kaynak Ara", fn.cmd.kaynak.kaynakAra)
-
 bot.on("text", fn.cmd.kaynak.kaynakListen)
 
 bot.launch();
