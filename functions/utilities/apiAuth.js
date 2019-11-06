@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 async function apiAuth() {
-  const res = await fetch('http://api.eksicode.org/auth/local', {
+  const res = await fetch('https://api.eksicode.org/auth/local', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
