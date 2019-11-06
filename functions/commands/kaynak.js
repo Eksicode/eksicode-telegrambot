@@ -58,7 +58,7 @@ async function kaynakEkle(ctx, link) {
       doc_link: url
     };
     try {
-      const req = await fetch("http://api.eksicode.org/kaynaklars", {
+      const req = await fetch("https://api.eksicode.org/kaynaklars", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
