@@ -11,8 +11,6 @@ const bot = new Telegraf(token);
 
 const fn = require("./functions");
 
-
-
 bot.use(CommandParser());
 
 bot.command("kaynak", ctx => fn.cmd.kaynak.kaynakCommand(ctx));
@@ -25,11 +23,7 @@ bot.command("discord", ctx => fn.cmd.discordCommand(ctx));
 
 bot.on(["new_chat_members", "left_chat_member"], fn.joinedLeftUserHandler);
 
-bot.hears("ℹ️ Kaynak Ekle", fn.cmd.kaynak.kaynakEkle)
-
 bot.hears("🔎 Kaynak Ara", fn.cmd.kaynak.kaynakAra)
-
-bot.on("callback_query", fn.cmd.kaynak.pageSwitch)
 
 bot.on("text", fn.cmd.kaynak.kaynakListen)
 
