@@ -8,52 +8,62 @@ require('dotenv').config({
 });
 const Telegraf = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const mysql = require('mysql');
-const config = require('./config.js');
 const axios = require('axios');
+const apiAuth = require("./functions/utilities/apiAuth");
 
-(async function telegramBot(){
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+(async () => {
+
+  const jwt = await apiAuth();
+
+  const updateMembers = async (id, members) => {
+    try {
+      let requestData = {
+        members: members
+      };
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + jwt
+        }
+      };  
+      const res = await axios.put("https://api.eksicode.org/telegrams/" + id, requestData, config);
+
+    } catch (err) {
+        console.error(err);
+    }
+  }
 
   let allGroups;
 
   axios.get('http://api.eksicode.org/telegrams?_sort=ListOrder:ASC')
     .then(async function(response){
       allGroups = response.data;
-      console.log(response.data.length);
+    })
+    .then(async () => {
+
+      console.log("toplam kanal sayısı: " + allGroups.length);
 
       for (let i = 0; i < allGroups.length; i++) {
         await bot.telegram
             .getChatMembersCount(allGroups[i].channelID)
             .then(data => {allGroups[i].members = data})
+            .then(async () => {
+              await sleep(2000);
+              updateMembers(allGroups[i].id, allGroups[i].members);
+
+              console.log(allGroups[i].name + " Güncellendi...")
+            })
             .catch(err => console.log(`${allGroups[i].name} için data çekilemedi.`));
 
         delete allGroups[i].channelID;
       }
 
-  let connection = mysql.createConnection(config);
- 
-  let sql, data;
-  for (let i = 0; i < allGroups.length; i++) {
-    console.log(allGroups[i].name + ": " + allGroups[i].members);
-
-    data = [allGroups[i].members, allGroups[i].id];
-
-    sql = "UPDATE telegrams SET members = ? WHERE id = ?";
-
-    connection.query(sql, data, (error, results, fields) => {
-      if (error){
-        return console.error(error.message);
-      }
-      console.log('Rows affected:', results.affectedRows);
-    });
-  }
-   
-  connection.end();
-
-})
-.catch(function(error){
-  console.log(error);
-})
-
-
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 })()
