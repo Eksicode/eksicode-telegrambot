@@ -6,13 +6,13 @@ function helpCommand(ctx) {
     
 -   \`/kaynak <URL>\`: Kaynak URL'sini Ekşicode veritabanına ekler.
     
--   \`/kanal <sorgu | tümü>\`: EksiCode kanalları arasında arama yapar. 
+-   \`/kanal <sorgu | * | tümü>\`: EksiCode kanalları arasında arama yapar. 
     
 -   \`/discord\`: Discord sunucusunun linkini gönderir.
 
-• **Kanal Bulunamadı hatası**
+• **Hata mesajı**
 
-Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`kanalBulunamadi.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`
+Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`HataMesaji.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`
     );
 }
 

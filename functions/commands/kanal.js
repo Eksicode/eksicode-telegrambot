@@ -8,7 +8,7 @@ async function kanalCommand(ctx) {
     const res = await fetch(
       encodeURI(
         `http://api.eksicode.org/telegrams?name_contains=${
-          args == "tümü" ? "" : args
+          args == "tümü" || "*" ? "" : args
         }`
       )
     );
