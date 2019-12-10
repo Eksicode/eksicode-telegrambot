@@ -20,7 +20,7 @@ bot.command("ban", ctx => fn.cmd.banCommand(ctx));
 bot.command("yardim", ctx => fn.cmd.helpCommand(ctx));
 bot.command("help", ctx => fn.cmd.helpCommand(ctx));
 bot.command("discord", ctx => fn.cmd.discordCommand(ctx));
-
+bot.command("jssartmi", ctx => fn.cmd.jssartmiCommand(ctx));
 bot.on(["new_chat_members", "left_chat_member"], fn.joinedLeftUserHandler);
 
 bot.launch();

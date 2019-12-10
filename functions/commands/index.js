@@ -4,5 +4,5 @@ const pinCommand = require("./pin");
 const banCommand = require("./ban");
 const helpCommand = require("./help");
 const discordCommand = require("./discord");
-
-module.exports = { kaynak, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand };
+const jssartmiCommand = require("./jssartmi")
+module.exports = { kaynak, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand, jssartmiCommand };
