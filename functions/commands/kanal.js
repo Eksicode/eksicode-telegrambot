@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const replyConfig = require("./replyConfig");
 const errorMessage = require("../utilities/randomErrorMessage");
 
 async function kanalCommand(ctx) {
@@ -8,7 +7,7 @@ async function kanalCommand(ctx) {
     const res = await fetch(
       encodeURI(
         `http://api.eksicode.org/telegrams?name_contains=${
-          args == "tümü" || "*" ? "" : args
+          args === "tümü" || args === "*" ? "" : args
         }`
       )
     );
@@ -21,7 +20,9 @@ async function kanalCommand(ctx) {
     } else {
       ctx.reply(
         `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`,
-        replyConfig
+        {
+          "reply_to_message_id": ctx.message.id
+        }
       );
     }
   } else {
