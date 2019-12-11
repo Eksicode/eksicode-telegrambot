@@ -21,7 +21,7 @@ async function kanalCommand(ctx) {
       ctx.reply(
         `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`,
         {
-          "reply_to_message_id": ctx.message.id
+          "reply_to_message_id": ctx.message.message_id
         }
       );
     }
