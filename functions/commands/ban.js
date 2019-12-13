@@ -18,10 +18,11 @@ async function banCommand(ctx) {
         );
       });
     } else {
-      console.log("yetkisiz işlem");
+      console.log("Ban yetkisiz işlem");
     }
   } catch (err) {
-    console.log("yetkisiz işlem");
+    console.log("Ban Error");
+    console.log(err);
   }
 }
 
