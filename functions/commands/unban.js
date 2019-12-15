@@ -2,7 +2,7 @@ const axios = require('axios')
 
 async function unbanCommand (ctx) {
   const request = await axios.get('http://api.eksicode.org/telegrams')
-  const groups = await request.json()
+  const groups = request.data
 
   try {
     const member = await ctx.telegram.getChatMember(
@@ -10,7 +10,7 @@ async function unbanCommand (ctx) {
       ctx.from.id
     )
 
-    if (member.status === 'administrator' || member.status === 'creator') {
+    if ((member.status === 'administrator' || member.status === 'creator') && ctx.message.reply_to_message.forward_from) {
       groups.map(async e => {
         await ctx.telegram.unbanChatMember(e.channelID, ctx.message.reply_to_message.forward_from.id)
       })
