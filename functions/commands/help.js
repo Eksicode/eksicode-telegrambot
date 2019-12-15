@@ -1,5 +1,5 @@
-function helpCommand(ctx) {
-    ctx.replyWithMarkdown(
+function helpCommand (ctx) {
+  ctx.replyWithMarkdown(
 `• **Bot Komutları**
 
 -  \`/help\` veya \`/yardım\`: Bot komutlarını listeler.
@@ -13,7 +13,7 @@ function helpCommand(ctx) {
 • **Hata mesajı**
 
 Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`HataMesaji.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`
-    );
+  )
 }
 
-module.exports = helpCommand;
+module.exports = helpCommand
