@@ -1,20 +1,18 @@
-const fetch = require('node-fetch');
+const axios = require('axios')
 
-async function apiAuth() {
-  const res = await fetch('https://api.eksicode.org/auth/local', {
-    method: 'POST',
+async function apiAuth () {
+  const res = await axios.post('https://api.eksicode.org/auth/local', {
+    identifier: process.env.API_USER,
+    password: process.env.API_PASS
+  }, {
     headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      identifier: process.env.API_USER,
-      password: process.env.API_PASS,
-    }),
-  });
+      'Content-Type': 'application/json'
+    }
+  })
 
-  const data = await res.json();
+  const data = res.data
 
-  return data.jwt;
+  return data.jwt
 }
 
-module.exports = apiAuth;
+module.exports = apiAuth
