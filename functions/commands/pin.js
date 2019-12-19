@@ -21,7 +21,7 @@ async function pinCommand (ctx) {
         if (exceptions.includes(e.channelID)) {
           console.log(`${e.name} kanalına .pinignore dosyası sebebiyle gönderilmeyecektir.`)
         } else {
-          const message = await ctx.telegrams.sendMessage(e.channelID, args, {
+          const message = await ctx.telegram.sendMessage(e.channelID, args, {
             disable_notification: true
           })
 
