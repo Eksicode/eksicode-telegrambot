@@ -10,10 +10,12 @@ async function unbanCommand (ctx) {
       ctx.from.id
     )
 
-    if ((member.status === 'administrator' || member.status === 'creator') && ctx.message.reply_to_message.forward_from) {
+    if ((member.status === 'administrator' || member.status === 'creator') && ctx.message.reply_to_message) {
+      const userId = ctx.message.reply_to_message.text.split(' ')[0]
       groups.map(async e => {
-        await ctx.telegram.unbanChatMember(e.channelID, ctx.message.reply_to_message.forward_from.id)
+        await ctx.telegram.unbanChatMember(e.channelID, userId)
       })
+      ctx.telegram.sendMessage(process.env.ADMIN_CH_ID, `${userId} numaralı kullanıcının banı başarıyla kaldırıldı.`)
     } else {
       console.log('Unban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
