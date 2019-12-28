@@ -4,7 +4,7 @@ const apiAuth = require('../utilities/apiAuth')
 const errorMessage = require('../utilities/randomErrorMessage')
 
 async function kaynakCommand (ctx) {
-  const link = ctx.state.command.args
+  const link = ctx.state.command.args.split(' ')[0]
   if (!link.length) {
     return ctx.reply('Kullanım: /kaynak <link>')
   }
@@ -24,6 +24,7 @@ async function kaynakCommand (ctx) {
     }
   } catch (err) {
     console.error(err)
+    console.log('get error')
     ctx.telegram.deleteMessage(
       loadingMessage.chat.id,
       loadingMessage.message_id
@@ -61,6 +62,8 @@ async function kaynakCommand (ctx) {
       loadingMessage.chat.id,
       loadingMessage.message_id
     )
+    console.log('post error')
+    console.error(err)
     ctx.reply(`${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`,
       { reply_to_message_id: ctx.message.message_id })
   }

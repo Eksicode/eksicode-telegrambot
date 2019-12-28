@@ -1,4 +1,4 @@
-const joinedLeftUserHandler = require('./joinedLeftUserHandler')
+const handlers = require('./handlers')
 const cmd = require('./commands')
 
-module.exports = { cmd, joinedLeftUserHandler }
+module.exports = { cmd, handlers }

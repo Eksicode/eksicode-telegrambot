@@ -5,6 +5,5 @@ const banCommand = require('./ban')
 const unbanCommand = require('./unban')
 const helpCommand = require('./help')
 const discordCommand = require('./discord')
-const jssartmiCommand = require('./jssartmi')
 
-module.exports = { kaynak, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand, jssartmiCommand, unbanCommand }
+module.exports = { kaynak, kanalCommand, pinCommand, banCommand, helpCommand, discordCommand, unbanCommand }
