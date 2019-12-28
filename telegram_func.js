@@ -23,6 +23,6 @@ bot.command('discord', ctx => fn.cmd.discordCommand(ctx))
 
 bot.on(['new_chat_members', 'left_chat_member'], ctx => fn.handlers.joinedLeftUserHandler(ctx))
 
-bot.on('message', fn.handlers.jsSartMiHandler)
+bot.on('text', fn.handlers.jsSartMiHandler)
 
 bot.launch()
