@@ -12,7 +12,7 @@ const fn = require('./functions')
 
 bot.use(CommandParser())
 
-bot.command('kaynak', ctx => fn.cmd.kaynak.kaynakCommand)
+bot.command('kaynak', ctx => fn.cmd.kaynak.kaynakCommand(ctx))
 bot.command('kanal', ctx => fn.cmd.kanalCommand(ctx))
 bot.command('pin', ctx => fn.cmd.pinCommand(ctx))
 bot.command('ban', ctx => fn.cmd.banCommand(ctx))
