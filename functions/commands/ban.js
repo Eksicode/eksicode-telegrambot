@@ -2,9 +2,6 @@ const axios = require('axios')
 
 async function banCommand (ctx) {
   await ctx.deleteMessage()
-  const request = await axios.get('http://api.eksicode.org/telegrams')
-  const groups = request.data
-
   try {
     const member = await ctx.telegram.getChatMember(
       ctx.chat.id,
@@ -12,6 +9,8 @@ async function banCommand (ctx) {
     )
 
     if ((member.status === 'administrator' || member.status === 'creator') && ctx.message.reply_to_message) {
+      const request = await axios.get('http://api.eksicode.org/telegrams')
+      const groups = request.data
       groups.map(async e => {
         await ctx.telegram.kickChatMember(e.channelID, ctx.message.reply_to_message.from.id)
       })
