@@ -22,6 +22,8 @@ bot.command('help', ctx => fn.cmd.helpCommand(ctx))
 bot.command('discord', ctx => fn.cmd.discordCommand(ctx))
 bot.command('jssartmi', ctx => fn.cmd.jssartmiCommand(ctx))
 
-bot.on(['new_chat_members', 'left_chat_member'], fn.joinedLeftUserHandler)
+bot.on('message', fn.handlers.jsSartMiHandler)
+
+bot.on(['new_chat_members', 'left_chat_member'], fn.handlers.joinedLeftUserHandler)
 
 bot.launch()

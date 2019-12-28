@@ -14,8 +14,8 @@ async function kanalCommand (ctx) {
     const channels = res.data
     if (channels.length) {
       ctx.replyWithMarkdown(
-        `Sonuçlar:
-                \n${channels.map(e => `[${e.name}](${e.link})\n`).join('')}`
+        `*Sonuçlar:*
+                \n${channels.map(e => `- [${e.name}](${e.link})\n`).join('')}`
       )
     } else {
       ctx.reply(
