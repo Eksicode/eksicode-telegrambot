@@ -1,5 +1,5 @@
 const axios = require('axios')
-const errorMessage = require('../utilities/randomErrorMessage')
+const { errorMessage } = require('../utilities')
 
 async function kanalCommand (ctx) {
   const args = ctx.state.command.args
