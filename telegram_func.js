@@ -8,21 +8,21 @@ const Telegraf = require('telegraf')
 const CommandParser = require('telegraf-command-parts')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-const fn = require('./functions')
+const { cmd, handlers } = require('./functions')
 
 bot.use(CommandParser())
 
-bot.command('kaynak', ctx => fn.cmd.kaynak.kaynakCommand(ctx))
-bot.command('kanal', ctx => fn.cmd.kanalCommand(ctx))
-bot.command('pin', ctx => fn.cmd.pinCommand(ctx))
-bot.command('ban', ctx => fn.cmd.banCommand(ctx))
-bot.command('unban', ctx => fn.cmd.unbanCommand(ctx))
-bot.command('yardim', ctx => fn.cmd.helpCommand(ctx))
-bot.command('help', ctx => fn.cmd.helpCommand(ctx))
-bot.command('discord', ctx => fn.cmd.discordCommand(ctx))
+bot.command('kaynak', ctx => cmd.kaynak.kaynakCommand(ctx))
+bot.command('kanal', ctx => cmd.kanalCommand(ctx))
+bot.command('pin', ctx => cmd.pinCommand(ctx))
+bot.command('ban', ctx => cmd.banCommand(ctx))
+bot.command('unban', ctx => cmd.unbanCommand(ctx))
+bot.command('yardim', ctx => cmd.helpCommand(ctx))
+bot.command('help', ctx => cmd.helpCommand(ctx))
+bot.command('discord', ctx => cmd.discordCommand(ctx))
 
-bot.on(['new_chat_members', 'left_chat_member'], ctx => fn.handlers.joinedLeftUserHandler(ctx))
+bot.on(['new_chat_members', 'left_chat_member'], ctx => handlers.joinedLeftUserHandler(ctx))
 
-bot.on('text', fn.handlers.jsSartMiHandler)
+bot.on('text', handlers.jsSartMiHandler)
 
 bot.launch()
