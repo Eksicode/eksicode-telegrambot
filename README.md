@@ -31,7 +31,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Yönetim Komutları
 
--   `/pin <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
+#### `/pin <mesaj>`
+Verilen `mesaj` argümanını tüm EksiCode kanallarında gönderir ve sabitler.
 
 #### `/ban` / `/unban`
 Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını "/ban" komutuyla cevaplamanız gerekmektedir. Komutun işlevini yerine getirmesi için bu mesajı yazdığınız grupta admin veya creator rolüne sahip olmanız gerekir. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını "/unban" komutu ile cevaplayın.
