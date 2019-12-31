@@ -33,8 +33,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `/pin <mesaj>`: Mesajı tüm EksiCode kanallarında gönderir ve sabitler.
 
--   `/ban` / `/unban`
-    bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını "/ban" komutuyla cevaplamanız gerekmektedir. Komutun işlevini yerine getirmesi için bu mesajı yazdığınız grupta admin veya creator rolüne sahip olmanız gerekir. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını "/unban" komutu ile cevaplayın.
+#### `/ban` / `/unban`
+Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını "/ban" komutuyla cevaplamanız gerekmektedir. Komutun işlevini yerine getirmesi için bu mesajı yazdığınız grupta admin veya creator rolüne sahip olmanız gerekir. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını "/unban" komutu ile cevaplayın.
 
 ## Hata Mesajları
 
