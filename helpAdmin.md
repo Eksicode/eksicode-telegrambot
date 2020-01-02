@@ -13,6 +13,6 @@
 
 Verilen `mesaj` argümanını tüm EksiCode kanallarında gönderir ve sabitler.
 
-•    `/ban | /unban`
+•    `/ban <sebep> | /unban`
 
-Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını `/ban` komutuyla cevaplamanız gerekmektedir. Komutun işlevini yerine getirmesi için bu mesajı yazdığınız grupta admin veya creator rolüne sahip olmanız gerekir. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını `/unban` komutu ile cevaplayın.
+Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını `/ban` komutuyla cevaplamanız gerekmektedir. Ban komutuyla birlikte sebebini de yazabilirsiniz. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını `/unban` komutu ile cevaplayın.

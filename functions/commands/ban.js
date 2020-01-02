@@ -2,20 +2,30 @@ const axios = require('axios')
 
 async function banCommand (ctx) {
   await ctx.deleteMessage()
+
+  const args = ctx.state.command.args
+
   try {
     const member = await ctx.telegram.getChatMember(
-      ctx.chat.id,
+      process.env.ADMIN_CH_ID,
       ctx.from.id
     )
 
-    if ((member.status === 'administrator' || member.status === 'creator') && ctx.message.reply_to_message) {
+    if (member && ctx.message.reply_to_message) {
+      const userName = ctx.message.reply_to_message.from.username
+      const firstName = ctx.message.reply_to_message.from.first_name
+      const lastName = ctx.message.reply_to_message.from.last_name
+      const userId = ctx.message.reply_to_message.from.id
+
       const request = await axios.get('http://api.eksicode.org/telegrams')
       const groups = request.data
+
       groups.map(async e => {
-        await ctx.telegram.kickChatMember(e.channelID, ctx.message.reply_to_message.from.id)
+        await ctx.telegram.kickChatMember(e.channelID, userId)
       })
+
       ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
-        `${ctx.message.reply_to_message.from.id} numaralı kullanıcı (${ctx.message.reply_to_message.from.username} ${ctx.message.reply_to_message.from.first_name} ${ctx.message.reply_to_message.from.last_name}) başarıyla tüm gruplardan uçuruldu.`)
+        `${userId} numaralı kullanıcı (${userName || (firstName + '' + lastName ? lastName : '')}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`)
     } else {
       console.log('Ban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
