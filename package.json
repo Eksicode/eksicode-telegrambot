@@ -4,7 +4,6 @@
     "description": "eksicode.org telegram bot",
     "main": "telegram.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node telegram.js"
     },
     "keywords": [

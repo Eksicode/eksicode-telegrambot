@@ -1,19 +1,15 @@
+const fs = require('fs')
+
+const helpText = fs.readFileSync('help.md', 'utf-8')
+
+const helpTextAdmin = fs.readFileSync('helpAdmin.md', 'utf-8')
+
 function helpCommand (ctx) {
-  ctx.replyWithMarkdown(
-`• **Bot Komutları**
-
--  \`/help\` veya \`/yardım\`: Bot komutlarını listeler.
-    
--   \`/kaynak <URL>\`: Kaynak URL'sini Ekşicode veritabanına ekler.
-    
--   \`/kanal <sorgu | * | tümü>\`: EksiCode kanalları arasında arama yapar. 
-    
--   \`/discord\`: Discord sunucusunun linkini gönderir.
-
-• **Hata mesajı**
-
-Siz de [bu repoyu forklayıp](https://github.com/Eksicode/eksicode-telegrambot) \`HataMesaji.txt\` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.`
-  )
+  if (ctx.message.chat.id === process.env.ADMIN_CH_ID) {
+    ctx.replyWithMarkdown(helpTextAdmin)
+  } else {
+    ctx.replyWithMarkdown(helpText)
+  }
 }
 
 module.exports = helpCommand

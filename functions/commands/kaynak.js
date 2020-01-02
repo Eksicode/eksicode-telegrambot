@@ -1,7 +1,6 @@
 const axios = require('axios')
 const { parse } = require('node-html-parser')
-const apiAuth = require('../utilities/apiAuth')
-const errorMessage = require('../utilities/randomErrorMessage')
+const { apiAuth, errorMessage } = require('../utilities')
 
 async function kaynakCommand (ctx) {
   const link = ctx.state.command.args.split(' ')[0]
