@@ -13,13 +13,19 @@ async function kaynakCommand (ctx) {
   })
   let title = ''
   try {
-    const titleFetch = await axios.get(url)
-    const contentType = titleFetch.headers['content-type']
+    const titleHeaders = await axios.head(url)
+    const contentType = await titleHeaders.headers['content-type']
     if (contentType.match('text/html')) {
+      const titleFetch = await axios.get(url)
       const html = titleFetch.data
       title = parse(html).querySelector('title').text
     } else {
-      title = link
+      const fileName = titleHeaders.headers['content-disposition'].match(/(filename=)(")(?<fileName>.*?)(")/).groups.fileName
+      if (fileName) {
+        title = fileName
+      } else {
+        title = link
+      }
     }
   } catch (err) {
     console.error(err)
@@ -32,14 +38,14 @@ async function kaynakCommand (ctx) {
       { reply_to_message_id: ctx.message.message_id }
     )
   }
-  const jwt = await apiAuth()
-  const requestData = {
-    doc_name: title,
-    doc_creator_tg: ctx.from.id,
-    doc_tg_ch: ctx.message.chat.id,
-    doc_link: url
-  }
   try {
+    const jwt = await apiAuth()
+    const requestData = {
+      doc_name: title,
+      doc_creator_tg: ctx.from.id,
+      doc_tg_ch: ctx.message.chat.id,
+      doc_link: url
+    }
     const req = await axios.post('https://api.eksicode.org/kaynaklars', requestData, {
       headers: {
         'Content-Type': 'application/json',
