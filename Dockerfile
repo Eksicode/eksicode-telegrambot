@@ -6,7 +6,6 @@ WORKDIR /var/bot/
 
 COPY . /var/bot/
 
-# RUN npm install -g nodemon
 RUN npm install
 
 RUN npm install pm2 -g
