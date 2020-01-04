@@ -5,9 +5,10 @@ async function kanalCommand (ctx) {
   const args = ctx.state.command.args
   try {
     if (args) {
+      const query = args === 'tümü' || args === '*' ? '' : args
       const res = await axios.get('http://api.eksicode.org/telegrams', {
         params: {
-          name_contains: args
+          name_contains: query
         }
       })
       const channels = res.data
