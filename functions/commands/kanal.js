@@ -5,13 +5,11 @@ async function kanalCommand (ctx) {
   const args = ctx.state.command.args
   try {
     if (args) {
-      const res = await axios.get(
-        encodeURIComponent(
-        `http://api.eksicode.org/telegrams?name_contains=${
-          args === 'tümü' || args === '*' ? '' : args
-        }`
-        )
-      )
+      const res = await axios.get('http://api.eksicode.org/telegrams', {
+        params: {
+          name_contains: args
+        }
+      })
       const channels = res.data
       if (channels.length) {
         ctx.replyWithMarkdown(
