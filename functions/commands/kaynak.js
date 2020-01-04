@@ -58,7 +58,7 @@ async function kaynakCommand (ctx) {
         loadingMessage.message_id
       )
       ctx.reply(
-        'Kaynak başarıyla eklendi! Yönetici ekibimiz inceleyip onaylayacak.',
+        'Teşekkürler! Kaynak başarıyla eklendi.',
         { reply_to_message_id: ctx.message.message_id }
       )
     }

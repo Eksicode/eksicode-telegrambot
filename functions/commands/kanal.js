@@ -6,7 +6,7 @@ async function kanalCommand (ctx) {
   try {
     if (args) {
       const res = await axios.get(
-        encodeURI(
+        encodeURIComponent(
         `http://api.eksicode.org/telegrams?name_contains=${
           args === 'tümü' || args === '*' ? '' : args
         }`
