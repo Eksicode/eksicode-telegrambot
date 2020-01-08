@@ -37,6 +37,10 @@ Verilen `mesaj` argümanını tüm EksiCode kanallarında gönderir ve sabitler.
 #### `/ban <sebep>` / `/unban`
 Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını `/ban` komutuyla cevaplamanız gerekmektedir. Ban komutuyla birlikte sebebini de yazabilirsiniz. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını `/unban` komutu ile cevaplayın.
 
+#### `/duyuru <mesaj>`
+
+Verilen `mesaj` argümanını tüm EksiCode kanallarına gönderir.
+
 ## Hata Mesajları
 
 Siz de bu repoyu forklayıp `hataMesaji.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.

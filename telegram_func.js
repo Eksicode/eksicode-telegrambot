@@ -20,6 +20,7 @@ bot.command('unban', ctx => cmd.unbanCommand(ctx))
 bot.command('yardim', ctx => cmd.helpCommand(ctx))
 bot.command('help', ctx => cmd.helpCommand(ctx))
 bot.command('discord', ctx => cmd.discordCommand(ctx))
+bot.command('duyuru', ctx => cmd.announcementCommand(ctx))
 
 bot.on(['new_chat_members', 'left_chat_member'], ctx => handlers.joinedLeftUserHandler(ctx))
 

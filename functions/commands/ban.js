@@ -25,7 +25,7 @@ async function banCommand (ctx) {
       })
 
       ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
-        `${userId} numaralı kullanıcı (${userName || (firstName + '' + lastName ? lastName : '')}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`)
+        `${userId} numaralı kullanıcı (${userName || (firstName + ' ' + (lastName || ''))}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`)
     } else {
       console.log('Ban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
