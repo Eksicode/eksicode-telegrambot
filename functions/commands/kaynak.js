@@ -20,7 +20,12 @@ async function kaynakCommand (ctx) {
       const html = titleFetch.data
       title = parse(html).querySelector('title').text
     } else {
-      const fileName = titleHeaders.headers['content-disposition'].match(/(filename=)(")(?<fileName>.*?)(")/).groups.fileName
+      let fileName
+      try {
+        fileName = titleHeaders.headers['content-disposition'].match(/(filename=)(")(?<fileName>.*?)(")/).groups.fileName
+      } catch (err) {
+        console.error(err)
+      }
       if (fileName) {
         title = fileName
       } else {
