@@ -9,7 +9,8 @@ async function announcementCommand (ctx) {
     )
     const channels = channelsReq.data
 
-    if (ctx.message.chat.id === process.env.ADMIN_CH_ID && args) {
+    if ((ctx.message.chat.id.toString() === process.env.ADMIN_CH_ID) && args) {
+      console.log('admin')
       channels.map(async e => {
         await ctx.telegram.sendMessage(e.channelID, args)
       })
