@@ -23,23 +23,24 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `/yardim` - Komutları listeler.
 
+
 -   `/kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
 
 -   `/kanal <Sorgu | tümü>` - kanalları listeler.
 
 -   `/discord` -  Discord sunucumuz.
 
-### Yönetim Komutları
+-   `/duyuru` -  Duyuru kanalımız.
 
-#### `/pin <mesaj>`
-Verilen `mesaj` argümanını tüm EksiCode kanallarında gönderir ve sabitler.
+
+### Yönetim Komutları
 
 #### `/ban <sebep>` / `/unban`
 Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesajını `/ban` komutuyla cevaplamanız gerekmektedir. Ban komutuyla birlikte sebebini de yazabilirsiniz. Eğer bir kullanıcının banını kaldırmak istiyorsanız Admin kanalına gönderilen bildirim mesajını `/unban` komutu ile cevaplayın.
 
-#### `/duyuru <mesaj>`
+#### `/pin <mesaj>`
+`mesaj` argümanını tüm Ekşicode gruplarına gönderir ve sabitler.
 
-Verilen `mesaj` argümanını tüm EksiCode kanallarına gönderir.
 
 ## Hata Mesajları
 

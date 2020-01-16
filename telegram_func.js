@@ -13,17 +13,18 @@ const { cmd, handlers } = require('./functions')
 bot.use(CommandParser())
 
 bot.command('kaynak', ctx => cmd.kaynak.kaynakCommand(ctx))
-bot.command('kanal', ctx => cmd.kanalCommand(ctx))
-bot.command('pin', ctx => cmd.pinCommand(ctx))
+bot.command('grup', ctx => cmd.groupCommand(ctx))
+bot.command('kanal', ctx => cmd.groupCommand(ctx))
 bot.command('ban', ctx => cmd.banCommand(ctx))
 bot.command('unban', ctx => cmd.unbanCommand(ctx))
 bot.command('yardim', ctx => cmd.helpCommand(ctx))
 bot.command('help', ctx => cmd.helpCommand(ctx))
 bot.command('discord', ctx => cmd.discordCommand(ctx))
 bot.command('duyuru', ctx => cmd.announcementCommand(ctx))
+bot.command('pin', ctx => cmd.pinCommand(ctx))
 
 bot.on(['new_chat_members', 'left_chat_member'], ctx => handlers.joinedLeftUserHandler(ctx))
 
-bot.on('text', handlers.jsSartMiHandler)
+bot.on('text', handlers.easterEggHandler)
 
 bot.launch()

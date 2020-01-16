@@ -1,5 +1,16 @@
 function discordCommand (ctx) {
-  ctx.replyWithMarkdown('[Discord kanalımız için tıklayın.](https://discord.gg/cZRhbuJ)')
+  ctx.reply('Discord Sunucumuza Girin.', {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: '🎙 Discord Sunucumuz',
+            url: 'https://discord.gg/cZRhbuJ'
+          }
+        ]
+      ]
+    }
+  })
 }
 
 module.exports = discordCommand

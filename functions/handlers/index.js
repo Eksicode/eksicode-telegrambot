@@ -1,4 +1,4 @@
-const jsSartMiHandler = require('./jsSartMiHandler')
+const easterEggHandler = require('./easterEggHandler')
 const joinedLeftUserHandler = require('./joinedLeftUserHandler')
 
-module.exports = { jsSartMiHandler, joinedLeftUserHandler }
+module.exports = { easterEggHandler, joinedLeftUserHandler }

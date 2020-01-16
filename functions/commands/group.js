@@ -1,7 +1,7 @@
 const axios = require('axios')
 const { errorMessage } = require('../utilities')
 
-async function kanalCommand (ctx) {
+async function groupCommand (ctx) {
   const args = ctx.state.command.args
   try {
     if (args) {
@@ -35,4 +35,4 @@ async function kanalCommand (ctx) {
   }
 }
 
-module.exports = kanalCommand
+module.exports = groupCommand
