@@ -1,38 +1,47 @@
 const axios = require('axios')
 const { errorMessage } = require('../utilities')
 
-async function groupCommand (ctx) {
-  const args = ctx.state.command.args
-  try {
-    if (args) {
-      const query = args === 'tümü' || args === '*' ? '' : args
-      const res = await axios.get('http://api.eksicode.org/telegrams', {
-        params: {
-          name_contains: query
-        }
-      })
-      const channels = res.data
-      if (channels.length) {
-        ctx.replyWithMarkdown(
-        `*Sonuçlar:*
-                \n${channels.map(e => `- [${e.name}](${e.link})\n`).join('')}`
-        )
-      } else {
-        ctx.reply(
-        `${errorMessage()} Hiç sonuç bulamadık. Hatalı yazmadığınızdan emin olup tekrar deneyebilirsiniz.`, {
-          reply_to_message_id: ctx.message.message_id
-        }
-        )
+class GroupBot {
+  constructor (ctx) {
+    this.args = ctx.message.text.slice(ctx.message.entities[0].length + 1)
+    this.query = ['tümü', '*'].includes(this.args) ? '' : this.args
+    this.groups = []
+    this.answer = ''
+
+    this.executeCommand(ctx)
+  }
+
+  async executeCommand (ctx) {
+    try {
+      if (!this.args) {
+        ctx.reply('Kullanım: /grup <sorgu|tümü|*>')
+        return 1
       }
-    } else {
-      ctx.reply('Kullanım: /kanal <sorgu|tümü>', {
-        reply_to_message_id: ctx.message.message_id
-      })
+      await this.fetchGroups()
+      this.formatAnswer()
+      this.send(ctx)
+    } catch (err) {
+      console.error(err)
+      ctx.reply(`${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`)
     }
-  } catch (err) {
-    console.log('Kanal komutunda beklenmedik bir hata oluştu.')
-    console.error(err)
+  }
+
+  async fetchGroups () {
+    const groupsRequest = await axios.get('https://api.eksicode.org/telegrams', {
+      params: {
+        name_contains: this.query
+      }
+    })
+    this.groups = await groupsRequest.data
+  }
+
+  formatAnswer () {
+    this.answer = `*Sonuçlar:*\n\n ${this.groups.map(e => `- [${e.name}](${e.link})`).join('\n')}`
+  }
+
+  send (ctx) {
+    ctx.replyWithMarkdown(this.answer)
   }
 }
 
-module.exports = groupCommand
+module.exports = GroupBot
