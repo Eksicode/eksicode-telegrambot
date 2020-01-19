@@ -19,18 +19,17 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Genel
 
--   `/help` - Komutları listeler.
+-   `!help` - Komutları listeler.
 
--   `/yardim` - Komutları listeler.
+-   `!yardim` - Komutları listeler.
 
+-   `!kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
 
--   `/kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
+-   `!kanal <Sorgu | tümü>` - kanalları listeler.
 
--   `/kanal <Sorgu | tümü>` - kanalları listeler.
+-   `!discord` -  Discord sunucumuz.
 
--   `/discord` -  Discord sunucumuz.
-
--   `/duyuru` -  Duyuru kanalımız.
+-   `!duyuru` -  Duyuru kanalımız.
 
 
 ### Yönetim Komutları
