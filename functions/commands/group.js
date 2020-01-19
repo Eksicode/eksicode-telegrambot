@@ -13,6 +13,10 @@ class GroupBot {
 
   async executeCommand (ctx) {
     try {
+      if (!this.args) {
+        ctx.reply('Kullanım: /grup <sorgu|tümü|*>')
+        return 1
+      }
       await this.fetchGroups()
       this.formatAnswer()
       this.send(ctx)
