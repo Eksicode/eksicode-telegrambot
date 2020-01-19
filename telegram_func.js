@@ -12,8 +12,8 @@ const { cmd, handlers } = require('./functions')
 
 bot.use(CommandParser())
 
-bot.command('kaynak', ctx => cmd.kaynak.kaynakCommand(ctx))
-bot.command('grup', ctx => cmd.groupCommand(ctx))
+bot.command('kaynak', ctx => new cmd.SourceBot(ctx))
+bot.command('grup', ctx => new cmd.GroupBot(ctx))
 bot.command('kanal', ctx => cmd.groupCommand(ctx))
 bot.command('ban', ctx => cmd.banCommand(ctx))
 bot.command('unban', ctx => cmd.unbanCommand(ctx))
