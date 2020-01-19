@@ -1,4 +1,4 @@
-•  `!help | /yardim`    -    Bot komutlarını listeler.
+•  `/help | /yardim`    -    Bot komutlarını listeler.
 
 •   `!kaynak <URL>`    -    Kaynak URL'sini Ekşicode veritabanına ekler.
     

@@ -19,9 +19,9 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 ### Genel
 
--   `!help` - Komutları listeler.
+-   `/help` - Komutları listeler.
 
--   `!yardim` - Komutları listeler.
+-   `/yardim` - Komutları listeler.
 
 -   `!kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
 
