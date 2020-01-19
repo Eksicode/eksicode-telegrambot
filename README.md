@@ -23,14 +23,13 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `/yardim` - Komutları listeler.
 
+-   `!kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
 
--   `/kaynak <URL>`: Kaynak URL'sini Ekşicode veritabanına ekler.
+-   `!kanal <Sorgu | tümü>` - kanalları listeler.
 
--   `/kanal <Sorgu | tümü>` - kanalları listeler.
+-   `!discord` -  Discord sunucumuz.
 
--   `/discord` -  Discord sunucumuz.
-
--   `/duyuru` -  Duyuru kanalımız.
+-   `!duyuru` -  Duyuru kanalımız.
 
 
 ### Yönetim Komutları

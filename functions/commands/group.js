@@ -3,7 +3,7 @@ const { errorMessage } = require('../utilities')
 
 class GroupBot {
   constructor (ctx) {
-    this.args = ctx.message.text.slice(ctx.message.entities[0].length + 1)
+    this.args = ctx.message.text.slice(ctx.message.text.split(' ')[0].length + 1)
     this.query = ['tümü', '*'].includes(this.args) ? '' : this.args
     this.groups = []
     this.answer = ''
@@ -14,7 +14,7 @@ class GroupBot {
   async executeCommand (ctx) {
     try {
       if (!this.args) {
-        ctx.reply('Kullanım: /grup <sorgu|tümü|*>')
+        ctx.reply('Kullanım: !grup <sorgu|tümü|*>')
         return 1
       }
       await this.fetchGroups()

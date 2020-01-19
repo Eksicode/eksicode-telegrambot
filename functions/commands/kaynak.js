@@ -30,7 +30,7 @@ class SourceBot {
       this.createSourcesFromLinks()
 
       if (!this.sources.length) {
-        ctx.reply('Kullanım: /kaynak <link(ler) içeren mesaj>')
+        ctx.reply('Kullanım: !kaynak <link(ler) içeren mesaj>')
         return 1
       }
 
@@ -40,7 +40,7 @@ class SourceBot {
       await this.addTitlesToSources()
       await this.postToAPI()
 
-      ctx.telegram.editMessageText(message.chat.id, message.message_id, undefined, 'Teşekkürler! Kaynak başarıyla eklendi.')
+      ctx.telegram.editMessageText(message.chat.id, message.message_id, undefined, 'Teşekkürler! Kaynaklar başarıyla eklendi.')
     } catch (err) {
       console.error(err)
       ctx.telegram.editMessageText(message.chat.id, message.message_id, undefined, `${errorMessage()} Bir hata oluştu. Lütfen daha sonra tekrar deneyin.`)
@@ -48,13 +48,17 @@ class SourceBot {
   }
 
   createSourcesFromLinks () {
-    this.entities.map(e => {
-      if (e.type === 'url') {
-        const link = this.text.slice(e.offset, e.offset + e.length)
-        const linkHttpAdded = link.startsWith('http://') || link.startsWith('https://') ? link : 'http://' + link
-        this.sources.push(new Source(linkHttpAdded, this.tgChannel, this.tgUser))
-      }
-    })
+    try {
+      this.entities.map(e => {
+        if (e.type === 'url') {
+          const link = this.text.slice(e.offset, e.offset + e.length)
+          const linkHttpAdded = link.startsWith('http://') || link.startsWith('https://') ? link : 'http://' + link
+          this.sources.push(new Source(linkHttpAdded, this.tgChannel, this.tgUser))
+        }
+      })
+    } catch (err) {
+      this.sources = []
+    }
   }
 
   async addHeadersToSources () {
