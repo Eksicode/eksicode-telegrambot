@@ -8,8 +8,8 @@
 
 •   `!duyuru`    -    Duyuru kanalımıza katılın.
 
-•   `!youtube`    -    Duyuru kanalımıza katılın.
+•   `!youtube`    -    Youtube kanalımıza abone olun.
 
-•   `!github`    -    Duyuru kanalımıza katılın.
+•   `!github`    -    Github hesabımıza göz atın.
 
-•   `!twitter`    -    Duyuru kanalımıza katılın.
+•   `!twitter`    -    Twitter hesabımızı takip edin.
