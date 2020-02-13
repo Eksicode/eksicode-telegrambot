@@ -19,8 +19,7 @@
         "dotenv": "^6.0.0",
         "node-html-parser": "^1.1.16",
         "path": "^0.12.7",
-        "telegraf": "^3.34.1",
-        "telegraf-command-parts": "^1.0.3"
+        "telegraf": "^3.34.1"
     },
     "devDependencies": {
         "eslint": "^6.7.2",
