@@ -1,11 +1,11 @@
 const axios = require('axios')
 
 async function banCommand (ctx) {
-  await ctx.deleteMessage()
-
-  const args = ctx.state.command.args
-
   try {
+    await ctx.deleteMessage()
+
+    const args = ctx.message.text.slice(ctx.message.entities[0].length)
+
     const member = await ctx.telegram.getChatMember(
       process.env.ADMIN_CH_ID,
       ctx.from.id
@@ -30,7 +30,7 @@ async function banCommand (ctx) {
       console.log('Ban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
   } catch (err) {
-    console.log('Ban Error: Yetkisiz İşlem')
+    console.log('Ban Error: Hata aşağıdadır.')
     console.error(err)
   }
 }

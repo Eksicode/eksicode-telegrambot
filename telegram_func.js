@@ -5,12 +5,9 @@ require('dotenv').config({
 })
 
 const Telegraf = require('telegraf')
-const CommandParser = require('telegraf-command-parts')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 const { cmd, handlers } = require('./functions')
-
-bot.use(CommandParser())
 
 bot.command('ban', ctx => cmd.banCommand(ctx))
 bot.command('unban', ctx => cmd.unbanCommand(ctx))
