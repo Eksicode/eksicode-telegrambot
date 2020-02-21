@@ -17,7 +17,7 @@ async function banCommand (ctx) {
     )
     
     const isMember = member && (member.status !== 'kicked' || member.status !== 'left')
-    const isAdmin = toBeBanned && (toBeBanned.status === 'administrator' || toBeBanned.status === 'creator')
+    const isAdmin = toBeBanned && (toBeBanned.status !== 'kicked' || toBeBanned.status !== 'left')
 
     if (!isAdmin && isMember && ctx.message.reply_to_message) {
       const userName = ctx.message.reply_to_message.from.username
