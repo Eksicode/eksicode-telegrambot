@@ -11,7 +11,15 @@ async function banCommand (ctx) {
       ctx.from.id
     )
 
-    if (member && ctx.message.reply_to_message) {
+    const toBeBanned = await ctx.telegram.getChatMember(
+      process.env.ADMIN_CH_ID,
+      ctx.message.reply_to_message.from.id
+    )
+    
+    const isMember = member && (member.status !== 'kicked' || member.status !== 'left')
+    const isAdmin = toBeBanned && (toBeBanned.status === 'administrator' || toBeBanned.status === 'creator')
+
+    if (!isAdmin && isMember && ctx.message.reply_to_message) {
       const userName = ctx.message.reply_to_message.from.username
       const firstName = ctx.message.reply_to_message.from.first_name
       const lastName = ctx.message.reply_to_message.from.last_name
