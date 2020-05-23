@@ -19,4 +19,6 @@ bot.on(['new_chat_members', 'left_chat_member'], ctx => handlers.joinedLeftUserH
 
 bot.on('text', ctx => handlers.textHandler(ctx))
 
+bot.on('callback_query', handlers.callbackHandler)
+
 bot.launch()

@@ -9,6 +9,7 @@ const githubCommand = require('./github')
 const twitterCommand = require('./twitter')
 const announcementCommand = require('./announcement')
 const pinCommand = require('./pin')
+const reportCommand = require('./report')
 
 module.exports = {
   SourceBot,
@@ -21,5 +22,6 @@ module.exports = {
   pinCommand,
   youtubeCommand,
   githubCommand,
-  twitterCommand
+  twitterCommand,
+  reportCommand
 }
