@@ -3,7 +3,7 @@ const easterEggHandler = require('./easterEggHandler')
 
 function textHandler (ctx) {
   const message = ctx.message.text
-  const commands = ['!kaynak', '!grup', '!yardim', '!help', '!discord', '!duyuru', '!youtube', '!twitter', '!github']
+  const commands = ['!kaynak', '!grup', '!yardim', '!help', '!discord', '!duyuru', '!youtube', '!twitter', '!github', '!report']
   if (commands.includes(message.split(' ')[0])) {
     switch (message.split(' ')[0]) {
       case '!kaynak':
@@ -32,6 +32,9 @@ function textHandler (ctx) {
         break
       case '!github':
         cmd.githubCommand(ctx)
+        break
+      case '!report':
+        cmd.reportCommand(ctx)
         break
     }
   } else {

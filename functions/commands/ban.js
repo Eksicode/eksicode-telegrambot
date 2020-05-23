@@ -15,7 +15,7 @@ async function banCommand (ctx) {
       process.env.ADMIN_CH_ID,
       ctx.message.reply_to_message.from.id
     )
-    
+
     const isMember = member && !(member.status === 'kicked' || member.status === 'left')
     const isAdmin = toBeBanned && !(toBeBanned.status === 'kicked' || toBeBanned.status === 'left')
 
@@ -32,8 +32,20 @@ async function banCommand (ctx) {
         await ctx.telegram.kickChatMember(e.channelID, userId)
       })
 
-      ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
-        `${userId} numaralı kullanıcı (${userName || (firstName + ' ' + (lastName || ''))}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`)
+      await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
+        `${userId} numaralı kullanıcı (${userName || (firstName + ' ' + (lastName || ''))}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`,
+        {
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: 'Geri Al',
+                  callback_data: `unban: ${userId}`
+                }
+              ]
+            ]
+          }
+        })
     } else {
       console.log('Ban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
