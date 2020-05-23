@@ -14,6 +14,8 @@
 
 •   `!twitter`    -    Twitter hesabımızı takip edin.
 
+•   `!report`    -    Grup yöneticilerini etiketler.
+
 
 *Yönetim Komutları*
 

@@ -13,3 +13,5 @@
 •   `!github`    -    Github hesabımıza göz atın.
 
 •   `!twitter`    -    Twitter hesabımızı takip edin.
+
+•   `!report`    -    Grup yöneticilerini etiketler
