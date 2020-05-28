@@ -84,7 +84,7 @@ class SourceBot {
   async postToAPI () {
     const jwt = await apiAuth()
     await Promise.all(this.sources.map(async e => {
-      await axios.post('https://api.eksicode.org/kaynaklars', {
+      await axios.post(`${process.env.API_URL}/kaynaklars`, {
         doc_name: e.title,
         doc_link: e.url,
         doc_creator_tg: e.tgUser,
