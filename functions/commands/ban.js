@@ -1,12 +1,24 @@
 const axios = require('axios')
 
+function generateBanMessage (ctx, args) {
+  const userName = ctx.message.reply_to_message.from.username
+  const firstName = ctx.message.reply_to_message.from.first_name
+  const lastName = ctx.message.reply_to_message.from.last_name
+  const userId = ctx.message.reply_to_message.from.id
+
+  const banned = `[${firstName || lastName || userName}](tg://user?id=${userId})`
+  const admin = `[${ctx.from.first_name || ctx.from.last_name || ctx.from.username}](tg://user?id=${ctx.from.id})`
+
+  return `*${userId}* *BAN*  🔨  ✈️\n\n*Banlanan Kişi*: ${banned}\n*Banlayan Admin*: ${admin}\n*Sebep*: ${args || "Belirtilmemiş"}`
+}
+
 async function banCommand (ctx) {
   try {
     await ctx.deleteMessage()
 
     const args = ctx.message.text.slice(ctx.message.entities[0].length)
 
-    const member = await ctx.telegram.getChatMember(
+    const admin = await ctx.telegram.getChatMember(
       process.env.ADMIN_CH_ID,
       ctx.from.id
     )
@@ -16,16 +28,13 @@ async function banCommand (ctx) {
       ctx.message.reply_to_message.from.id
     )
 
-    const isMember = member && !(member.status === 'kicked' || member.status === 'left')
-    const isAdmin = toBeBanned && !(toBeBanned.status === 'kicked' || toBeBanned.status === 'left')
+    const isAdmin = admin && !(admin.status === 'kicked' || admin.status === 'left')
+    const isMember = toBeBanned && !(toBeBanned.status === 'kicked' || toBeBanned.status === 'left')
 
-    if (!isAdmin && isMember && ctx.message.reply_to_message) {
-      const userName = ctx.message.reply_to_message.from.username
-      const firstName = ctx.message.reply_to_message.from.first_name
-      const lastName = ctx.message.reply_to_message.from.last_name
+    if (!isMember && isAdmin && ctx.message.reply_to_message) {
       const userId = ctx.message.reply_to_message.from.id
 
-      const request = await axios.get('http://api.eksicode.org/telegrams')
+      const request = await axios.get(`${process.env.API_URL}/telegrams`)
       const groups = request.data
 
       groups.map(async e => {
@@ -33,8 +42,9 @@ async function banCommand (ctx) {
       })
 
       await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
-        `${userId} numaralı kullanıcı (${userName || (firstName + ' ' + (lastName || ''))}) başarıyla tüm gruplardan uçuruldu. ${args ? `Sebep: ${args}` : ''}`,
+        generateBanMessage(ctx, args),
         {
+          parse_mode: "Markdown",
           reply_markup: {
             inline_keyboard: [
               [

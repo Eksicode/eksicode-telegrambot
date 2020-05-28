@@ -27,7 +27,7 @@ class GroupBot {
   }
 
   async fetchGroups () {
-    const groupsRequest = await axios.get('https://api.eksicode.org/telegrams', {
+    const groupsRequest = await axios.get(`${process.env.API_URL}/telegrams`, {
       params: {
         name_contains: this.query
       }

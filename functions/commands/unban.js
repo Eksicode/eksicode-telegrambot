@@ -3,7 +3,7 @@ const axios = require('axios')
 async function unbanCommand (ctx, id) {
   try {
     if (id || (ctx.message.chat.id.toString() === process.env.ADMIN_CH_ID && ctx.message.reply_to_message)) {
-      const request = await axios.get('http://api.eksicode.org/telegrams')
+      const request = await axios.get(`${process.env.API_URL}/telegrams`)
       const groups = request.data
 
       const userId = id || ctx.message.reply_to_message.text.split(' ')[0]
