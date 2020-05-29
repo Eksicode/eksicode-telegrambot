@@ -1,42 +1,26 @@
 const cmd = require('../commands')
 const easterEggHandler = require('./easterEggHandler')
 
+const commands = {
+  // Maybe rename the commands to abcCommand instead of abcBot,
+  // so that their names are consistent.
+  '!kaynak': cmd.SourceBot
+  '!grup': cmd.GroupBot,
+  '!yardim': cmd.helpCommand,
+  '!help': cmd.helpCommand,
+  '!discord': cmd.discordCommand,
+  '!duyuru': cmd.announcementCommand,
+  '!youtube': cmd.youtubeCommand,
+  '!twitter': cmd.twitterCommand,
+  '!github': cmd.githubCommand,
+  '!report': cmd.reportCommand
+} 
+
 function textHandler (ctx) {
   const message = ctx.message.text
-  const commands = ['!kaynak', '!grup', '!yardim', '!help', '!discord', '!duyuru', '!youtube', '!twitter', '!github', '!report']
-  if (commands.includes(message.split(' ')[0])) {
-    switch (message.split(' ')[0]) {
-      case '!kaynak':
-        new cmd.SourceBot(ctx)
-        break
-      case '!grup':
-        new cmd.GroupBot(ctx)
-        break
-      case '!yardim':
-        cmd.helpCommand(ctx)
-        break
-      case '!help':
-        cmd.helpCommand(ctx)
-        break
-      case '!discord':
-        cmd.discordCommand(ctx)
-        break
-      case '!duyuru':
-        cmd.announcementCommand(ctx)
-        break
-      case '!youtube':
-        cmd.youtubeCommand(ctx)
-        break
-      case '!twitter':
-        cmd.twitterCommand(ctx)
-        break
-      case '!github':
-        cmd.githubCommand(ctx)
-        break
-      case '!report':
-        cmd.reportCommand(ctx)
-        break
-    }
+  const command = message.split(' ')[0] // There probably is a better way to parse the messages here.
+  if (command in commands) {
+    commands[command](ctx)
   } else {
     easterEggHandler(ctx)
   }
