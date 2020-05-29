@@ -36,7 +36,11 @@ class GroupBot {
   }
 
   formatAnswer () {
-    this.answer = `*Sonuçlar:*\n\n ${this.groups.map(e => `- [${e.name}](${e.link})`).join('\n')}`
+    if (this.groups.length) {
+      this.answer = `*Sonuçlar:*\n\n ${this.groups.map(e => `- [${e.name}](${e.link})`).join('\n')}`
+    } else {
+      this.answer = `${errorMessage()} Sonuç bulunamadı. 😕`
+    }
   }
 
   send (ctx) {
