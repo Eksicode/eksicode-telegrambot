@@ -4,7 +4,7 @@ const easterEggHandler = require('./easterEggHandler')
 const commands = {
   // Maybe rename the commands to abcCommand instead of abcBot,
   // so that their names are consistent.
-  '!kaynak': cmd.SourceBot
+  '!kaynak': cmd.SourceBot,
   '!grup': cmd.GroupBot,
   '!yardim': cmd.helpCommand,
   '!help': cmd.helpCommand,
