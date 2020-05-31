@@ -20,9 +20,13 @@ function textHandler (ctx) {
   const message = ctx.message.text
   const command = message.split(' ')[0] // There probably is a better way to parse the messages here.
   if (command in commands) {
-    commands[command](ctx)
+    try {
+      return new commands[command](ctx)
+    } catch (e) {
+      return commands[command](ctx)
+    }
   } else {
-    easterEggHandler(ctx)
+    return easterEggHandler(ctx)
   }
 }
 
