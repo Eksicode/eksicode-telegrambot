@@ -12,7 +12,7 @@ const commands = {
   '!twitter': cmd.twitterCommand,
   '!github': cmd.githubCommand,
   '!report': cmd.reportCommand
-} 
+}
 
 function textHandler (ctx) {
   const message = ctx.message.text

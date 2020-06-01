@@ -18,7 +18,7 @@ async function unbanCommand (ctx, id) {
       groups.map(async e => {
         await ctx.telegram.unbanChatMember(e.channelID, userId)
       })
-      await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID, generateUnbanMessage(ctx, userId), { parse_mode: "Markdown" })
+      await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID, generateUnbanMessage(ctx, userId), { parse_mode: 'Markdown' })
     } else {
       console.log('Unban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
