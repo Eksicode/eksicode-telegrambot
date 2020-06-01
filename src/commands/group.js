@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { errorMessage } = require('../utilities')
+const { errorMessage } = require('../utils')
 
 class GroupBot {
   constructor (ctx) {

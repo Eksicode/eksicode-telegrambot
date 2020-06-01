@@ -1,6 +1,6 @@
 const axios = require('axios')
 const { parse } = require('node-html-parser')
-const { apiAuth, errorMessage } = require('../utilities')
+const { apiAuth, errorMessage } = require('../utils')
 
 class Source {
   constructor (url, tgChannel, tgUser, title, headers) {

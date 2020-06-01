@@ -7,11 +7,11 @@ require('dotenv').config({
 const Telegraf = require('telegraf')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-const { cmd, handlers } = require('./functions')
+const { cmd, utils, handlers } = require('./src')
 
-bot.command('ban', ctx => cmd.banCommand(ctx))
-bot.command('unban', ctx => cmd.unbanCommand(ctx))
-bot.command('pin', ctx => cmd.pinCommand(ctx))
+bot.command('ban', ctx => utils.forAdmins(ctx, cmd.banCommand))
+bot.command('unban', ctx => utils.forAdmins(ctx, cmd.unbanCommand))
+bot.command('pin', ctx => utils.forAdmins(ctx, cmd.pinCommand))
 bot.command('yardim', ctx => cmd.helpCommand(ctx))
 bot.command('help', ctx => cmd.helpCommand(ctx))
 

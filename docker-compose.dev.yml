@@ -7,11 +7,8 @@ services:
       - ./:/var/bot
     env_file:
       - .env
-    networks:
-      - eksicode_nw
+    network_mode: "host"
 
 volumes:
   bot:
 
-networks:
-  eksicode_nw:

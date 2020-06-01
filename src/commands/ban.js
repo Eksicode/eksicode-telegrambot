@@ -9,7 +9,7 @@ function generateBanMessage (ctx, args) {
   const banned = `[${firstName || lastName || userName}](tg://user?id=${userId})`
   const admin = `[${ctx.from.first_name || ctx.from.last_name || ctx.from.username}](tg://user?id=${ctx.from.id})`
 
-  return `*${userId}* *BAN*  🔨  ✈️\n\n*Banlanan Kişi*: ${banned}\n*Banlayan Admin*: ${admin}\n*Sebep*: ${args || "Belirtilmemiş"}`
+  return `*${userId}* *BAN*  🔨  🛫 \n\n*Banlanan Kişi*: ${banned}\n*Banlayan Admin*: ${admin}\n*Sebep*: ${args || "Belirtilmemiş"}`
 }
 
 async function banCommand (ctx) {
@@ -18,20 +18,14 @@ async function banCommand (ctx) {
 
     const args = ctx.message.text.slice(ctx.message.entities[0].length)
 
-    const admin = await ctx.telegram.getChatMember(
-      process.env.ADMIN_CH_ID,
-      ctx.from.id
-    )
-
     const toBeBanned = await ctx.telegram.getChatMember(
       process.env.ADMIN_CH_ID,
       ctx.message.reply_to_message.from.id
     )
 
-    const isAdmin = admin && !(admin.status === 'kicked' || admin.status === 'left')
-    const isMember = toBeBanned && !(toBeBanned.status === 'kicked' || toBeBanned.status === 'left')
+    const isToBeBannedNotAdmin = !toBeBanned || (toBeBanned.status === 'kicked' || toBeBanned.status === 'left')
 
-    if (!isMember && isAdmin && ctx.message.reply_to_message) {
+    if (isToBeBannedNotAdmin && ctx.message.reply_to_message) {
       const userId = ctx.message.reply_to_message.from.id
 
       const request = await axios.get(`${process.env.API_URL}/telegrams`)
