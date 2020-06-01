@@ -6,8 +6,8 @@ const exceptions = fs
   .toString()
   .split('\r\n')
 
-async function pinCommand(ctx) {
-  const args = ctx.message.text.slice(ctx.message.text.split(" ")[0].length)
+async function pinCommand (ctx) {
+  const args = ctx.message.text.slice(ctx.message.text.split(' ')[0].length)
   try {
     const groupsReq = await axios.get('http://api.eksicode.org/telegrams')
     const groups = groupsReq.data

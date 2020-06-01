@@ -9,7 +9,7 @@ function generateBanMessage (ctx, args) {
   const banned = `[${firstName || lastName || userName}](tg://user?id=${userId})`
   const admin = `[${ctx.from.first_name || ctx.from.last_name || ctx.from.username}](tg://user?id=${ctx.from.id})`
 
-  return `*${userId}* *BAN*  🔨  🛫 \n\n*Banlanan Kişi*: ${banned}\n*Banlayan Admin*: ${admin}\n*Sebep*: ${args || "Belirtilmemiş"}`
+  return `*${userId}* *BAN*  🔨  🛫 \n\n*Banlanan Kişi*: ${banned}\n*Banlayan Admin*: ${admin}\n*Sebep*: ${args || 'Belirtilmemiş'}`
 }
 
 async function banCommand (ctx) {
@@ -38,7 +38,7 @@ async function banCommand (ctx) {
       await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID,
         generateBanMessage(ctx, args),
         {
-          parse_mode: "Markdown",
+          parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
               [
