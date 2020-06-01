@@ -2,8 +2,6 @@ const cmd = require('../commands')
 const easterEggHandler = require('./easterEggHandler')
 
 const commands = {
-  // Maybe rename the commands to abcCommand instead of abcBot,
-  // so that their names are consistent.
   '!kaynak': cmd.SourceBot,
   '!grup': cmd.GroupBot,
   '!yardim': cmd.helpCommand,
@@ -18,7 +16,7 @@ const commands = {
 
 function textHandler (ctx) {
   const message = ctx.message.text
-  const command = message.split(' ')[0] // There probably is a better way to parse the messages here.
+  const command = message.split(' ')[0]
   if (command in commands) {
     try {
       return new commands[command](ctx)

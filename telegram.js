@@ -9,7 +9,7 @@ require('dotenv').config({
 const Telegraf = require('telegraf')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 const axios = require('axios')
-const { apiAuth } = require('./functions/utilities')
+const { apiAuth } = require('./src/utils')
 
 const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
