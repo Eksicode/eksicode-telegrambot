@@ -17,8 +17,10 @@
     "dependencies": {
         "axios": "^0.18.1",
         "dotenv": "^6.0.0",
+        "http": "0.0.1-security",
         "node-html-parser": "^1.1.16",
         "path": "^0.12.7",
+        "request": "^2.88.2",
         "telegraf": "^3.34.1"
     },
     "devDependencies": {
