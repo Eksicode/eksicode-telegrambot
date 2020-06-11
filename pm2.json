@@ -9,5 +9,11 @@
       "script": "telegram_func.js",
       "watch": true,
       "instances": 1
+    },{
+      "name": "kaynaklar-kontrol",
+      "script": "kaynaklar_kontrol.js",
+      "instances": 1,
+      "restart_delay": 172800000,
+      "kill_timeout": 600000
     }]
   }
