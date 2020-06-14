@@ -2,12 +2,12 @@ const axios = require('axios')
 
 const { apiAuth, errorMessage } = require('../utils')
 
-async function fetchUnapprovedResources() {
+async function fetchUnapprovedResources () {
   const res = await axios.get(`${process.env.API_URL}/kaynaklars`)
   return res.data.filter(e => !e.approved)
 }
 
-function parseResources(resources) {
+function parseResources (resources) {
   if (resources.length) {
     return resources.map(e => `*${e.id}:* [${e.doc_name}](${e.doc_link})`).join('\n')
   } else {
@@ -15,7 +15,7 @@ function parseResources(resources) {
   }
 }
 
-async function approveResources(ids) {
+async function approveResources (ids) {
   ids.forEach(async e => {
     const jwt = await apiAuth()
     const data = {
@@ -30,7 +30,7 @@ async function approveResources(ids) {
   })
 }
 
-async function kontrolCommand(ctx) {
+async function kontrolCommand (ctx) {
   const args = ctx.message.text.slice(ctx.message.entities[0].length + 1)
   try {
     if (args) {
