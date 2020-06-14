@@ -26,3 +26,7 @@ Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesaj�
 •    `/pin <mesaj>`
 
 `mesaj` argümanını tüm Ekşicode gruplarına gönderir ve sabitler.
+
+•    `/kontrol <kaynak-numaraları>`
+
+boş kullanıldığında onaylanmamış kaynakları listeler. Kaynakları onaylamak için komuta argüman olarak onaylamak istediğiniz kaynakların numaralarını boşlukla ayırarak yazınız.
