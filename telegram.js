@@ -29,7 +29,7 @@ const sleep = (ms) => {
           Authorization: 'Bearer ' + jwt
         }
       }
-      axios.put('https://api.eksicode.org/telegrams/' + id, requestData, config)
+      axios.put(`${process.env.API_URL}/telegrams/` + id, requestData, config)
     } catch (err) {
       console.error(err)
     }
@@ -37,7 +37,7 @@ const sleep = (ms) => {
 
   let allGroups
 
-  axios.get('http://api.eksicode.org/telegrams?_sort=ListOrder:ASC')
+  axios.get(`${process.env.API_URL}/telegrams?_sort=ListOrder:ASC`)
     .then(async function (response) {
       allGroups = response.data
     })
