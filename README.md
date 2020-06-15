@@ -41,6 +41,10 @@ Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesaj�
 `mesaj` argümanını tüm Ekşicode gruplarına gönderir ve sabitler.
 
 
+#### `/kontrol <kaynak-numaraları>`
+
+Boş kullanıldığında onaylanmamış kaynakları listeler. Kaynakları onaylamak için komuta argüman olarak onaylamak istediğiniz kaynakların numaralarını boşlukla ayırarak yazınız. Onaylanmamış bir kaynağı silmek için silmek istediğiniz kaynağın numarasının başına `!` işareti koyun.
+
 ## Hata Mesajları
 
 Siz de bu repoyu forklayıp `hataMesaji.txt` dosyası içerisine hata mesajı için ünlem ekleyebilirsiniz.

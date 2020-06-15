@@ -29,4 +29,4 @@ Bir kullanıcıyı banlamak için herhangi bir gruptayken kullanıcının mesaj�
 
 •    `/kontrol <kaynak-numaraları>`
 
-boş kullanıldığında onaylanmamış kaynakları listeler. Kaynakları onaylamak için komuta argüman olarak onaylamak istediğiniz kaynakların numaralarını boşlukla ayırarak yazınız.
+Boş kullanıldığında onaylanmamış kaynakları listeler. Kaynakları onaylamak için komuta argüman olarak onaylamak istediğiniz kaynakların numaralarını boşlukla ayırarak yazınız. Onaylanmamış bir kaynağı silmek için silmek istediğiniz kaynağın numarasının başına `!` işareti koyun.
