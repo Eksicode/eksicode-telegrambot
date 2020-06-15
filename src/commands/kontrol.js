@@ -18,15 +18,18 @@ function parseResources (resources) {
 async function approveResources (ids) {
   ids.forEach(async e => {
     const jwt = await apiAuth()
-    const data = {
-      approved: true
-    }
-    await axios.put(`${process.env.API_URL}/kaynaklars/${e}`, data, {
+    console.log(e[0] === '!')
+    const config = {
+      url: `${process.env.API_URL}/kaynaklars/${e[0] === '!' ? e.slice(1) : e}`,
+      method: e[0] === '!' ? 'delete' : 'put',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwt
+        Authorization: `Bearer ${jwt}`
+      },
+      data: {
+        approved: e[0] !== '!'
       }
-    })
+    }
+    axios(config)
   })
 }
 
@@ -35,7 +38,7 @@ async function kontrolCommand (ctx) {
   try {
     if (args) {
       await approveResources(args.split(' '))
-      await ctx.reply('Kaynaklar başarıyla onaylandı!')
+      await ctx.reply('İşlem başarılı!')
     } else {
       const resources = await fetchUnapprovedResources()
       const parsed = parseResources(resources)
