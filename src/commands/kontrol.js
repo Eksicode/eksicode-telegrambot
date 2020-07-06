@@ -3,7 +3,7 @@ const axios = require('axios')
 const { apiAuth, errorMessage } = require('../utils')
 
 async function fetchUnapprovedResources () {
-  const res = await axios.get(`${process.env.API_URL}/kaynaklars`)
+  const res = await axios.get(`${process.env.API_URL}/kaynaklars?_limit=99999`)
   return res.data.filter(e => !e.approved)
 }
 
