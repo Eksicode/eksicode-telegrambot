@@ -70,12 +70,12 @@ class SourceBot {
 
   async addTitlesToSources () {
     await Promise.all(this.sources.map(async e => {
-      if (e.headers['content-type'].match('text/html')) {
+      if (e?.headers['content-type']?.match('text/html')) {
         const getRequest = await axios.get(e.url)
         const html = getRequest.data
         e.title = parse(html).querySelector('title').text || e.url
       } else {
-        const fileName = e.headers['content-disposition'].match(/(filename=)(")(?<fileName>.*?)(")/).groups.fileName
+        const fileName = e?.headers['content-disposition']?.match(/(filename=)(")(?<fileName>.*?)(")/)?.groups?.fileName
         e.title = fileName || e.url
       }
     }))
