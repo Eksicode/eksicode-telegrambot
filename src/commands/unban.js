@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { log } = require('../utils')
 
 function generateUnbanMessage (ctx, userId) {
   const unbanned = `[${userId}](tg://user?id=${userId})`
@@ -19,6 +20,7 @@ async function unbanCommand (ctx, id) {
         await ctx.telegram.unbanChatMember(e.channelID, userId)
       })
       await ctx.telegram.sendMessage(process.env.ADMIN_CH_ID, generateUnbanMessage(ctx, userId), { parse_mode: 'Markdown' })
+      await log(ctx, { type: 'unban', userId })
     } else {
       console.log('Unban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
