@@ -9,6 +9,11 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 
 const { cmd, utils, handlers } = require('./src')
 
+bot.use(async (ctx, next) => {
+  await utils.log(ctx)
+  await next()
+})
+
 bot.command('ban', ctx => utils.forAdmins(ctx, cmd.banCommand))
 bot.command('unban', ctx => utils.forAdmins(ctx, cmd.unbanCommand))
 bot.command('pin', ctx => utils.forAdmins(ctx, cmd.pinCommand))

@@ -1,19 +1,27 @@
 {
-    "apps": [{
+  "apps": [
+    {
       "name": "eksicodeBot-user",
       "script": "telegram.js",
       "instances": 1,
       "restart_delay": 43200000
-    }, {
+    },
+    {
       "name": "eksicodeBot-func",
       "script": "telegram_func.js",
+      "ignore_watch": [
+        "logs",
+        "node_modules"
+      ],
       "watch": true,
       "instances": 1
-    },{
+    },
+    {
       "name": "kaynaklar-kontrol",
       "script": "kaynaklar_kontrol.js",
       "instances": 1,
       "restart_delay": 172800000,
       "kill_timeout": 600000
-    }]
-  }
+    }
+  ]
+}

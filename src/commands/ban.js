@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { log } = require('../utils')
 
 function generateBanMessage (ctx, args) {
   const userName = ctx.message.reply_to_message.from.username
@@ -16,7 +17,7 @@ async function banCommand (ctx) {
   try {
     await ctx.deleteMessage()
 
-    const args = ctx.message.text.slice(ctx.message.entities[0].length)
+    const args = ctx.message.text.slice(ctx.message.entities[0].length + 1)
 
     const toBeBanned = await ctx.telegram.getChatMember(
       process.env.ADMIN_CH_ID,
@@ -50,6 +51,7 @@ async function banCommand (ctx) {
             ]
           }
         })
+      await log(ctx, 'ban')
     } else {
       console.log('Ban Error: Yetkisiz İşlem / Hatalı Kullanım')
     }
