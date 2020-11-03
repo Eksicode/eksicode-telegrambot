@@ -13,6 +13,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   sample.env dosyasındaki örnek ayarlara göre bir .env dosyası oluşturun.
 
+-   Proje kök dizninde `.pinignore` adında dosya oluşturun.
+
 -   Docker'ı çalıştırın: `docker-compose up --build`
 
 ## Bot Komutları
