@@ -33,6 +33,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   `!duyuru` -  Duyuru kanalımız.
 
+-   `!hastebinize` - Kod içerikli / Uzun mesajları bu komut ile cevaplayarak hastebin'e yükleyebilirsiniz.
+
 
 ### Yönetim Komutları
 

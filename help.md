@@ -15,3 +15,5 @@
 •   `!twitter`    -    Twitter hesabımızı takip edin.
 
 •   `!report`    -    Grup yöneticilerini etiketler
+
+•   `!hastebinize`    -     Kod içerikli / Uzun mesajları bu komut ile cevaplayarak hastebin'e yükleyebilirsiniz.
