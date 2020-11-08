@@ -13,6 +13,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 
 -   sample.env dosyasındaki örnek ayarlara göre bir .env dosyası oluşturun.
 
+-   Proje kök dizninde `.pinignore` adında dosya oluşturun.
+
 -   Docker'ı çalıştırın: `docker-compose up --build`
 
 ## Bot Komutları
@@ -30,6 +32,8 @@ ve chat geliştirmeleri için yazılmaktadır.
 -   `!discord` -  Discord sunucumuz.
 
 -   `!duyuru` -  Duyuru kanalımız.
+
+-   `!hastebinize` - Kod içerikli / Uzun mesajları bu komut ile cevaplayarak hastebin'e yükleyebilirsiniz.
 
 
 ### Yönetim Komutları

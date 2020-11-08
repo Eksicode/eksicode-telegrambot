@@ -12,9 +12,10 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2020
     },
     "rules": {
-        "no-new": "off"
+        "no-new": "off",
+        "no-multi-spaces": "off"
     }
 }

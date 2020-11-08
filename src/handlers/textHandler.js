@@ -11,7 +11,8 @@ const commands = {
   '!youtube': cmd.youtubeCommand,
   '!twitter': cmd.twitterCommand,
   '!github': cmd.githubCommand,
-  '!report': cmd.reportCommand
+  '!report': cmd.reportCommand,
+  '!hastebinize': cmd.hastebinizeCommand
 }
 
 function textHandler (ctx) {
