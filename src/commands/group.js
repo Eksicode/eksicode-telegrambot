@@ -29,7 +29,8 @@ class GroupBot {
   async fetchGroups () {
     const groupsRequest = await axios.get(`${process.env.API_URL}/telegrams`, {
       params: {
-        name_contains: this.query
+        _sort: 'name:ASC',
+        name_contains: this.query,
       }
     })
     this.groups = await groupsRequest.data
