@@ -15,7 +15,7 @@
     "author": "Davut KARA & Mkltkn & Atakan Ermiş",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.18.1",
+        "axios": "^0.21.1",
         "dotenv": "^6.0.0",
         "http": "0.0.1-security",
         "node-html-parser": "^1.1.16",
